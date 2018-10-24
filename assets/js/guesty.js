@@ -169,7 +169,7 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTINGS = "" +
 
         '<div class="guesty-listing guesty-property">' +
-        '   <h2><a href="#" data-id="__LISTING.ID__" class="guesty-single-handle">__LISTING.TITLE__</a></h2>' +
+        '   <h2><a href="' + GUESTY_ARGS.baseURI + '__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-handle">__LISTING.TITLE__</a></h2>' +
         '   <p><span class="address">__LISTING.ADDRESS__</span><span class="tags">__LISTING.TAG__</span></p>' +
         '   <div class="guesty-thumbnail">' +
         '       <a href="#" class="guesty-single-handle" data-id="__LISTING.ID__"><img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__"></a>' +
@@ -180,7 +180,7 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTINGS_BOX = "" +
 
         '<div class="guesty-listing guesty-property guesty-layout-box">' +
-        '   <a href="#" data-id="__LISTING.ID__" class="guesty-single-handle">' +
+        '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-item">' +
         '       <div class="guesty-listing-box">' +
         '           <div class="guesty-thumbnail">' +
         '               <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
@@ -237,14 +237,20 @@ var Guesty = (function (window, document, $) {
             throw new Error("Container not found, Guesty is initialized with no container element.");
         }
 
+        prepareListingsUI();
+        prepareSingleUI();
+        registerEvents();
+    }
+
+    function prepareListingsUI(){
         currentPage = 0;
 
         buildListingUI({
             limit: _limit
         });
-
-        registerEvents();
     }
+
+    function prepareSingleUI(){}
 
     function buildListingUI(params) {
         $container.addClass("guesty-loading");

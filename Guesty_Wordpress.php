@@ -13,8 +13,7 @@ Author URI: http://makjoybd/
 */
 
 
-if ( ! defined( 'ABSPATH' ) )
-{
+if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
@@ -39,7 +38,7 @@ final class Guesty_Wordpress
 	private function __construct()
 	{
 		$this->setup();
-		$this->init();
+		$this->initialize();
 	}
 
 	private function setup()
@@ -49,14 +48,34 @@ final class Guesty_Wordpress
 		$this->base_location = admin_url( 'options-general.php?page=' . $this->menu_slug );
 	}
 
-	private function init()
+	private function initialize()
 	{
 		add_action( "admin_menu", array( $this, "menu" ) );
 		add_action( "admin_init", array( $this, "save_api" ) );
+		add_action( "init", array( $this, "init" ) );
 		add_action( "wp_enqueue_scripts", array( $this, "scripts" ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'custom_shortcode_scripts' ) );
 		add_action( 'template_include', array( $this, 'template_include' ), 99 );
 		add_shortcode( 'guesty-api', array( $this, 'shortcode' ) );
+	}
+
+	public function init(  )
+	{
+		$api=$this->getApi();
+
+		if(isset($api['page_id']) && $api['page_id'] !== "" && ($page = get_post($api['page_id']))){
+			$page_name = $page->post_name;
+			add_filter('query_vars', array($this, 'add_query_var'), 0, 1);
+			add_rewrite_rule('^' . $page_name . '/listing/([^/]+)/?$','index.php?pagename=' . $page_name . '&listing=$matches[1]','top');
+		}
+
+
+	}
+
+	public function add_query_var( $vars )
+	{
+		$vars[] = 'listing';
+		return $vars;
 	}
 
 	/**
@@ -67,8 +86,7 @@ final class Guesty_Wordpress
 	public static function Instance()
 	{
 		static $instance = false;
-		if ( $instance === false )
-		{
+		if ( $instance === false ) {
 			// Late static binding (PHP 5.3+)
 			$instance = new static();
 		}
@@ -110,24 +128,20 @@ final class Guesty_Wordpress
 	{
 		if (
 			! isset( $_POST ) || ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'save_guesty_api_token' )
-		)
-		{
+		) {
 			return false;
 		}
 
 		$api = $this->getApi();
 
-		if ( isset( $_POST['guesty-api-key'] ) )
-		{
+		if ( isset( $_POST['guesty-api-key'] ) ) {
 			$api['key'] = esc_attr( $_POST['guesty-api-key'] );
 		}
-		if ( isset( $_POST['guesty-api-secret'] ) )
-		{
+		if ( isset( $_POST['guesty-api-secret'] ) ) {
 			$api['secret'] = esc_attr( $_POST['guesty-api-secret'] );
 		}
 
-		if ( isset( $_POST['guesty-page-id'] ) )
-		{
+		if ( isset( $_POST['guesty-page-id'] ) ) {
 			$api['page_id'] = esc_attr( $_POST['guesty-page-id'] );
 		}
 
@@ -150,8 +164,7 @@ final class Guesty_Wordpress
 			'page_id' => ''
 		);
 
-		if ( ! is_array( $api ) )
-		{
+		if ( ! is_array( $api ) ) {
 			$api = array();
 		}
 
@@ -172,13 +185,27 @@ final class Guesty_Wordpress
 
 	public function custom_shortcode_scripts()
 	{
-		global $post;
-		if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'guesty-api' ) )
-		{
-			wp_enqueue_script( 'guesty-main' );
-			wp_enqueue_style( 'guesty-styles' );
-			wp_enqueue_style( 'font-awesome' );
+		if(!$this->has_shortcode()){
+			return false;
 		}
+		
+		global $post;
+		wp_enqueue_script( 'guesty-main' );
+		wp_enqueue_style( 'guesty-styles' );
+		wp_enqueue_style( 'font-awesome' );
+
+		$guesty = array(
+			'baseURI' => untrailingslashit( get_permalink( $post ) )
+		);
+
+		wp_localize_script( 'guesty-main', 'GUESTY_ARGS', $guesty );
+	}
+
+	public function has_shortcode()
+	{
+		global $post;
+
+		return ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'guesty-api' ) );
 	}
 
 	public function shortcode( $atts, $content = '' )
@@ -211,9 +238,11 @@ final class Guesty_Wordpress
 
 	public function template_include( $template )
 	{
+		global $wp_rewrite;
+		prefy(get_query_var('listing'), $wp_rewrite, $this->has_shortcode(), $template);
 		if ( is_page( 'portfolio' ) ) {
 			$new_template = locate_template( array( 'portfolio-page-template.php' ) );
-			if ( !empty( $new_template ) ) {
+			if ( ! empty( $new_template ) ) {
 				return $new_template;
 			}
 		}

@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $api = guesty()->getApi();
-
 ?>
 
 <div class="wrap">
@@ -15,9 +14,9 @@ $api = guesty()->getApi();
     <form class="guesty-api-form" action="<?php echo guesty()->location(); ?>" method="POST">
         <?php wp_nonce_field('save_guesty_api_token');?>
         <div class="form-group">
-            <label for="guesty-page-id">Guesty display page</label>
+            <label for="guesty-page-id" class="control-label">Guesty display page</label>
             <div class="form-control">
-                <?php wp_dropdown_pages(array('selected' => $api['page_id'], 'id' => 'guesty-page-id', 'name' => 'guesty-page-id', 'value_field' => 'post_name'));?>
+                <?php wp_dropdown_pages(array( 'show_option_none' => 'Select Page', 'selected' => $api['page_id'], 'id' => 'guesty-page-id', 'name' => 'guesty-page-id'));?>
             </div>
         </div>
         <div class="form-group">
