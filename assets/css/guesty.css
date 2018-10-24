@@ -284,3 +284,9 @@ body.guesty-overlay {
     font-size: 14px;
     margin-left: 10px;
 }
+
+.clearfix::after, .guesty-single-row::after {
+    display: block;
+    content: "";
+    clear: both;
+}

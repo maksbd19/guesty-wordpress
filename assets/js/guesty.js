@@ -17,6 +17,7 @@ var Guesty = (function (window, document, $) {
     var _limit = 7;
 
     var listingID = null;
+    var __options = {};
 
     var currentPage = 0;
     var $container = null;
@@ -171,7 +172,7 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTINGS = "" +
 
         '<div class="guesty-listing guesty-property">' +
-        '   <h2><a href="' + GUESTY_ARGS.baseURI + '__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-handle">__LISTING.TITLE__</a></h2>' +
+        '   <h2><a href="' + __options.baseURI + '__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-handle">__LISTING.TITLE__</a></h2>' +
         '   <p><span class="address">__LISTING.ADDRESS__</span><span class="tags">__LISTING.TAG__</span></p>' +
         '   <div class="guesty-thumbnail">' +
         '       <a href="#" class="guesty-single-handle" data-id="__LISTING.ID__"><img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__"></a>' +
@@ -182,8 +183,7 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTINGS_BOX = "" +
 
         '<div class="guesty-listing guesty-property guesty-layout-box">' +
-        // '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-item">' +
-        '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-handle">' +
+        '   <a href="__BASEURI__/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-listing">' +
         '       <div class="guesty-listing-box">' +
         '           <div class="guesty-thumbnail">' +
         '               <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
@@ -193,7 +193,7 @@ var Guesty = (function (window, document, $) {
         '                   <h2>__LISTING.TITLE__</h2>' +
         '                   <p class="guesty-box-meta">' +
         '                       <span class="guesty-meta-guest-count">__LISTING.META.GUESTS__</span>' +
-        '                       <span class="guesty-separator"></span>' +
+        '                       <span class="guesty-separator">|</span>' +
         '                       <span class="guesty-meta-bedrooms-count">__LISTING.META.BEDROOMS__</span>' +
         '                   </p>' +
         '               </div>' +
@@ -312,6 +312,7 @@ var Guesty = (function (window, document, $) {
 
                 $listing = TEMPLATES.LISTINGS_BOX.replace('__LISTING.TITLE__', item.title);
                 // $listing = $listing.replace('__LISTING.ID__', item.title);
+                $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
                 $listing = $listing.replace(/__LISTING.ID__/gi, item._id);
                 $listing = $listing.replace('__LISTING.IMAGE__', item.picture['thumbnail']);
                 $listing = $listing.replace('__LISTING.IMAGE.ALT__', item.picture['caption'] || item.title);
@@ -470,7 +471,7 @@ var Guesty = (function (window, document, $) {
         }
 
         $listing = TEMPLATES.LISTING.replace('__LISTING.TITLE__', item.title);
-        // $listing = $listing.replace('__LISTING.ID__', item.title);
+        $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
         $listing = $listing.replace('__LISTING.ID__', item._id);
         $listing = $listing.replace('__LISTING.ADDRESS__', item.address.full);
         $listing = $listing.replace('__LISTING.TAG__', (item.tags.length > 0 ? '' + item.tags.join(",") + '' : ''));
@@ -496,6 +497,16 @@ var Guesty = (function (window, document, $) {
     return function (container, token, id) {
         $container = $(container);
         TOKEN = token;
+
+        for(var i in GUESTY_ARGS){
+            if(GUESTY_ARGS.hasOwnProperty(i)){
+                __options[i] = GUESTY_ARGS[i];
+            }
+        }
+
+        if(__options.limit && !isNaN(parseInt(__options.limit))){
+            _limit = __options.limit;
+        }
 
         listingID = typeof id !== "undefined" ? id : null;
 

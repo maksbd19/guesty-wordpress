@@ -59,7 +59,7 @@ final class Guesty_Wordpress
 		add_shortcode( 'guesty-api', array( $this, 'shortcode' ) );
 
 //		add_filter('pre_get_posts', array($this, 'pre_get_posts'));
-		add_filter('rewrite_rules_array',array($this, 'listing_permalink'));
+		add_filter( 'rewrite_rules_array', array( $this, 'listing_permalink' ) );
 	}
 
 	public function init()
@@ -81,17 +81,17 @@ final class Guesty_Wordpress
 
 	public function listing_permalink( $rules )
 	{
-		$api = $this->getApi();
+		$api = $this->get_options();
 
 		$my_em_rules = array();
 
 		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
-			$page_id = $api['page_id'];
-			$page_slug = urldecode(preg_replace('/\/$/', '', str_replace( trailingslashit(home_url()), '', get_permalink($page_id)) ));
-			$page_slug = ( !empty($page_slug) ) ? untrailingslashit($page_slug) : $page_slug;
+			$page_id   = $api['page_id'];
+			$page_slug = urldecode( preg_replace( '/\/$/', '', str_replace( trailingslashit( home_url() ), '', get_permalink( $page_id ) ) ) );
+			$page_slug = ( ! empty( $page_slug ) ) ? untrailingslashit( $page_slug ) : $page_slug;
 
-			if( !empty($page_slug) ){
-				$my_em_rules['^' . $page_slug . '/listing/([a-zA-Z0-9]+)/?$'] = 'index.php?pagename=' . $page_slug . '&listing=$matches[1]';
+			if ( ! empty( $page_slug ) ) {
+				$my_em_rules[ '^' . $page_slug . '/listing/([a-zA-Z0-9]+)/?$' ] = 'index.php?pagename=' . $page_slug . '&listing=$matches[1]';
 			}
 		}
 
@@ -100,7 +100,7 @@ final class Guesty_Wordpress
 
 	public function add_rewrite_rule()
 	{
-		$api = $this->getApi();
+		$api = $this->get_options();
 
 		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
 			$page_name = $page->post_name;
@@ -110,7 +110,7 @@ final class Guesty_Wordpress
 
 	public function pre_get_posts( $query )
 	{
-		if(is_admin() || !$query->is_main_query()){
+		if ( is_admin() || ! $query->is_main_query() ) {
 			return $query;
 		}
 
@@ -170,20 +170,24 @@ final class Guesty_Wordpress
 			return false;
 		}
 
-		$api = $this->getApi();
+		$options = $this->get_options();
 
 		if ( isset( $_POST['guesty-api-key'] ) ) {
-			$api['key'] = esc_attr( $_POST['guesty-api-key'] );
+			$options['key'] = esc_attr( $_POST['guesty-api-key'] );
 		}
 		if ( isset( $_POST['guesty-api-secret'] ) ) {
-			$api['secret'] = esc_attr( $_POST['guesty-api-secret'] );
+			$options['secret'] = esc_attr( $_POST['guesty-api-secret'] );
 		}
 
 		if ( isset( $_POST['guesty-page-id'] ) ) {
-			$api['page_id'] = esc_attr( $_POST['guesty-page-id'] );
+			$options['page_id'] = esc_attr( $_POST['guesty-page-id'] );
 		}
 
-		$this->saveApi( $api );
+		if ( isset( $_POST['guesty-listing-limit'] ) ) {
+			$options['limit'] = esc_attr( $_POST['guesty-listing-limit'] );
+		}
+
+		$this->save_options( $options );
 
 		$location = $this->location();
 
@@ -195,26 +199,27 @@ final class Guesty_Wordpress
 		die( 0 );
 	}
 
-	public function getApi()
+	public function get_options()
 	{
-		$api = get_option( "_guesty_api_settings", array( 'key' => '', 'secret' => '' ) );
+		$options = get_option( "_guesty_api_settings", array( 'key' => '', 'secret' => '' ) );
 
 		$defaults = array(
 			'key'     => '',
 			'secret'  => '',
-			'page_id' => ''
+			'page_id' => '',
+			'limit'   => '10'
 		);
 
-		if ( ! is_array( $api ) ) {
-			$api = array();
+		if ( ! is_array( $options ) ) {
+			$options = array();
 		}
 
-		$api = wp_parse_args( $api, $defaults );
+		$options = wp_parse_args( $options, $defaults );
 
-		return $api;
+		return $options;
 	}
 
-	private function saveApi( $api )
+	private function save_options( $api )
 	{
 		return update_option( "_guesty_api_settings", $api );
 	}
@@ -232,12 +237,15 @@ final class Guesty_Wordpress
 
 		global $post;
 
+		$options = $this->get_options();
+
 		wp_enqueue_script( 'guesty-main' );
 		wp_enqueue_style( 'guesty-styles' );
 		wp_enqueue_style( 'font-awesome' );
 
 		$guesty = array(
-			'baseURI' => untrailingslashit( get_permalink( $post ) )
+			'baseURI' => untrailingslashit( get_permalink( $post ) ),
+			'limit' => $options['limit']
 		);
 
 		wp_localize_script( 'guesty-main', 'GUESTY_ARGS', $guesty );
@@ -257,22 +265,17 @@ final class Guesty_Wordpress
 			'bar' => 'something else',
 		), $atts );
 
-		$api    = $this->getApi();
-		$key    = $api['key'];
-		$secret = $api['secret'];
 
-		$token = "Basic " . base64_encode( "{$key}:{$secret}" );
+		$options = $this->get_options();
 
-//		$listings = $this->guesty->getListing(5);
+		$key    = $options['key'];
+		$secret = $options['secret'];
+
+		$token = 'Basic ' . base64_encode( "{$key}:{$secret}" );
 
 		ob_start();
 
-//		if(is_array($listings) && !empty($listings)){
 		include_once( $this->path( "view/view.php" ) );
-//		}
-//		else{
-//			echo "No listing found";
-//		}
 
 		return ob_get_clean();
 

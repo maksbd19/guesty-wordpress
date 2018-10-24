@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-$api = guesty()->getApi();
+$api = guesty()->get_options();
 ?>
 
 <div class="wrap">
@@ -30,6 +30,13 @@ $api = guesty()->getApi();
             <div class="form-control">
                 <input type="password" name="guesty-api-secret" id="guesty-api-secret"
                        value="<?php echo $api['secret']; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="guesty-listing-limit" class="control-label">Number of listings in one page</label>
+            <div class="form-control">
+                <input type="text" name="guesty-listing-limit" id="guesty-listing-limit"
+                       value="<?php echo $api['limit']; ?>">
             </div>
         </div>
         <div class="form-group form-submit">
