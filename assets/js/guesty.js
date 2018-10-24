@@ -224,7 +224,7 @@ var Guesty = (function (window, document, $) {
         '                   </div>' +
         '                   <div class="guesty-secondary-header-right">' +
         '                       <p class="guesry-listing-price">__LISTING.PRICE__</p>' +
-        '                       <p class="guesry-listing-per-night">Avg.per night</p>' +
+        '                       <p class="guesry-listing-per-night">Avg. per night</p>' +
         '                   </div>' +
         '               </div>' +
         '           </div>' +

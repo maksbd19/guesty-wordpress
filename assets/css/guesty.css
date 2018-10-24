@@ -190,15 +190,15 @@ body.guesty-overlay {
 }
 
 .guesty-property-single .guesty-primary {
-    width: 70%;
+    width: 66.6666667%;
     float: left;
-    padding: 0px 15px 0 0;
+    padding: 0px;
 }
 
 .guesty-property-single .guesty-secondary {
-    width: 30%;
+    width: 33.33333%;
     float: left;
-    padding: 0px 0 0 15px;
+    padding: 0px 20px;
 }
 
 .guesty-property-single .guesty-gallery img {
@@ -302,6 +302,40 @@ body.guesty-overlay {
 .guesty-single-row.guesty-single-row-full{
     max-width: 100%;
     padding: 0;
+}
+
+.guesty-secondary-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 14px;
+    color: #464646;
+}
+
+.guesty-secondary-header-left,
+.guesty-secondary-header-right{
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.guesty-secondary-header-left{
+    width: 70%;
+}
+.guesty-secondary-header-right{
+    width:30%
+}
+
+.guesty-secondary-header-right p{
+    margin:0;
+}
+
+.guesty-secondary-header-left h1{
+    font-size: 30px;
+}
+
+.guesty-secondary-header-right .guesry-listing-price{
+    font-size: 30px;
 }
 
 /*============================
