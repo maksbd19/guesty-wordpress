@@ -192,13 +192,17 @@ body.guesty-overlay {
 .guesty-property-single .guesty-primary {
     width: 66.6666667%;
     float: left;
-    padding: 0px;
+    padding: 0;
+    height: 600px;
 }
 
 .guesty-property-single .guesty-secondary {
     width: 33.33333%;
     float: left;
-    padding: 0px 20px;
+    padding: 0 20px;
+    background: #464646;
+    color: #fff;
+    height: 600px;
 }
 
 .guesty-property-single .guesty-gallery img {
@@ -309,7 +313,7 @@ body.guesty-overlay {
     flex-wrap: wrap;
     align-items: center;
     font-size: 14px;
-    color: #464646;
+    color: #fff;
 }
 
 .guesty-secondary-header-left,
@@ -331,7 +335,8 @@ body.guesty-overlay {
 }
 
 .guesty-secondary-header-left h1{
-    font-size: 30px;
+    font-size: 26px;
+    color:#fff;
 }
 
 .guesty-secondary-header-right .guesry-listing-price{
@@ -460,3 +465,226 @@ input:checked + .slide-container .carousel-controls label {
 }
 
 input:checked + .slide-container .nav label { display: block; }
+
+/**** other styles ***/
+.mb-lg-25 {
+    margin-bottom: .71rem!important;
+}
+
+.mb-45 {
+    margin-bottom: 2.1rem!important;
+}
+
+.mb-35 {
+    margin-bottom: 1.4rem!important;
+}
+
+.mt-35 {
+    margin-top: 1.4rem!important;
+}
+
+.separated-datepicker .DateRangePicker {
+    display: block;
+}
+
+.DateRangePicker {
+    position: relative;
+    display: inline-block;
+}
+
+.DateRangePicker {
+    width: 100%;
+}
+
+.separated-datepicker .DateRangePickerInput {
+    display: -ms-flexbox;
+    display: flex;
+    border: none;
+    background-color: transparent;
+}
+
+.DateRangePicker .DateRangePickerInput {
+    width: 100%;
+    background-color: hsla(0,0%,100%,.96);
+    border: none;
+    border-radius: 2px;
+    color: #464646;
+    text-align: center;
+    padding: 0;
+}
+.DateRangePickerInput__withBorder {
+    border: 1px solid #cacccd;
+}
+.DateRangePickerInput {
+    background-color: #fff;
+    display: inline-block;
+}
+
+.separated-datepicker .DateInput:first-child {
+    margin-right: .71rem;
+}
+
+.separated-datepicker .DateInput {
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    background-color: hsla(0,0%,100%,.95);
+    border-radius: 2px;
+}
+.DateRangePicker .DateInput {
+    background-color: transparent;
+    font-weight: 300;
+    color: #464646;
+    line-height: 25px;
+    cursor: pointer;
+}
+.DateInput {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    position: relative;
+    display: inline-block;
+    width: 130px;
+    vertical-align: middle;
+}
+
+.DateRangePicker .DateInput input:not(.DateInput_input__disabled) {
+    background: none;
+    border: .5px solid transparent;
+}
+
+.DateRangePicker .DateInput .DateInput_input {
+    padding-left: 20px;
+    padding-top: 10px;
+}
+.DateRangePicker .DateInput input {
+    border-radius: 2px;
+    font-size: 16px;
+}
+.DateInput_input {
+    font-weight: 200;
+    font-size: 18px;
+    line-height: 24px;
+    color: #565a5c;
+    background-color: #fff;
+    width: 100%;
+    padding: 13px 12px 11px;
+    border: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid transparent;
+    border-left: 0;
+}
+
+.DateInput_screenReaderMessage {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.DateRangePickerInput_clearDates__hide, .separated-datepicker .DateRangePickerInput_arrow {
+    display: none;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+.DateRangePickerInput_arrow_svg {
+    vertical-align: middle;
+    fill: #565a5c;
+    height: 24px;
+    width: 24px;
+}
+
+.Dropdown-root {
+    position: relative;
+    color: #464646;
+}
+
+.Dropdown-control {
+    position: relative;
+    overflow: hidden;
+    background-color: hsla(0,0%,100%,.95);
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    padding: 9px 52px 9px 20px;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.Dropdown-placeholder {
+    font-size: 16px;
+}
+
+.Dropdown-arrow {
+    display: block;
+    height: 8px;
+    width: 13px;
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    background-image: url(https://reserverentals.guestybookings.com/static/media/dropdown.32814f97.svg);
+}
+
+.d-block {
+    display: block!important;
+}
+
+.d-block .btn.submit-btn.btn-primary {
+    background: rgb(226, 36, 0);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    background-color: #6ac1ff;
+    border-color: #6ac1ff;
+}
+.btn.disabled, .btn:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+}
+.submit-btn {
+    height: 50px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #6ac1ff;
+    border-color: #6ac1ff;
+}
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 0 solid transparent;
+    padding: 1em;
+    font-size: 14px;
+    border-radius: 2px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+.col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+#primary{
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}

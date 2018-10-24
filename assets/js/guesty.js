@@ -156,13 +156,15 @@ var Guesty = (function (window, document, $) {
     G.handleAmenitiesLess = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").removeClass("open");
-        return false;
-    };
 
+        return false;
+
+    };
     G.handleAmenitiesMore = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").addClass("open");
         return false;
+
     };
 
     //  templates
@@ -212,10 +214,7 @@ var Guesty = (function (window, document, $) {
         // '       <div class="guesty-close"><a href="#">&times;</a></div>' +
         '       <div class="guesty-single-row guesty-single-row-full">' +
         '           <div class="guesty-primary">' +
-        '               <div class="guesty-primary-image">' +
-        // '                   <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
-        '               __LISTING.CAROUSEL__</div>' +
-        '               <div class="guesty-gallery">__LISTING.GALLERY__</div>' +
+        '               <div class="guesty-primary-image">__LISTING.CAROUSEL__</div>' +
         '           </div>' +
         '           <div class="guesty-secondary">' +
         '               <div class="guesty-secondary-header">' +
@@ -227,8 +226,108 @@ var Guesty = (function (window, document, $) {
         '                       <p class="guesry-listing-per-night">Avg. per night</p>' +
         '                   </div>' +
         '               </div>' +
+        '               <div class="mb-lg-25 mb-45 mt-35">' +
+        '                   <div class="separated-datepicker">' +
+        '                       <div class="DateRangePicker DateRangePicker_1">' +
+        '                           <div>' +
+        '                               <div class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2">' +
+        '                                   <div class="DateInput DateInput_1">' +
+        '                                       <input type="text" class="DateInput_input DateInput_input_1" aria-label="Check in" id="startDateId" name="startDateId" value="" placeholder="Check in" autocomplete="off" aria-describedby="DateInput__screen-reader-message-startDateId">' +
+        '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-startDateId">Press the down arrow key to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
+        '                                   </div>' +
+        '                                   <div class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1" aria-hidden="true" role="presentation">' +
+        '                                       <svg class="DateRangePickerInput_arrow_svg DateRangePickerInput_arrow_svg_1" viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>' +
+        '                                   </div>' +
+        '                                   <div class="DateInput DateInput_1">' +
+        '                                       <input type="text" class="DateInput_input DateInput_input_1" aria-label="Check out" id="endDateId" name="endDateId" value="" placeholder="Check out" autocomplete="off" aria-describedby="DateInput__screen-reader-message-endDateId">' +
+        '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-endDateId">Press the down arrow key to interact with the calendar andselect a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                   </div>' +
+        '               </div>' +
+        '               <div class="mb-35">' +
+        '                   <div class="Dropdown-root">' +
+        '                       <div class="Dropdown-control " data-label="Guests">' +
+        '                           <div class="Dropdown-placeholder">Guests</div>' +
+        '                           <span class="Dropdown-arrow"></span>' +
+        '                       </div>' +
+        '                   </div>' +
+        '               </div>'+
+        '               <a class="d-block" href="__LISTING.PERMALINK__/book?">' +
+        '                   <button class="col submit-btn btn btn-primary" disabled="" style="background: rgb(226, 36, 0);">Book</button>' +
+        '               </a>'+
         '           </div>' +
         '       </div>' +
+        // '       <div class="guesty-single-row">' +
+        // '           <div class="row no-gutters separator">' +
+        // '               <div class="col-xl p-sm-5 py-5 px-2 listing-general-info-row">' +
+        // '                   <div class="d-flex">' +
+        // '                       <div class="listing-general-info-item mr-4">' +
+        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        // '                               <div class="icon-wrap mb-2">' +
+        // '                                   <img src="/static/media/listing_guests.b6f69025.svg" alt="listing_guests">' +
+        // '                               </div>' +
+        // '                               <div class="wide">' +
+        // '                                   <div class="line-height-12">' +
+        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.GUESTS.COUNT__</span>' +
+        // '                                       <span>guests</span>' +
+        // '                                   </div>' +
+        // '                               </div>' +
+        // '                           </div>' +
+        // '                       </div>' +
+        // '                       <div class="listing-general-info-item mr-4">' +
+        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        // '                               <div class="icon-wrap mb-2">' +
+        // '                                   <img src="/static/media/listing_bedrooms.7ddd6a2a.svg" alt="listing_bedrooms">' +
+        // '                               </div>' +
+        // '                               <div class="wide">' +
+        // '                                   <div class="line-height-12">' +
+        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDROOMS.COUNT__</span>' +
+        // '                                       <span>bedrooms</span>' +
+        // '                                   </div>' +
+        // '                               </div>' +
+        // '                           </div>' +
+        // '                       </div>' +
+        // '                       <div class="listing-general-info-item mr-4">' +
+        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        // '                               <div class="icon-wrap mb-2">' +
+        // '                                   <img src="/static/media/listing_beds.7143f54e.svg" alt="listing_beds">' +
+        // '                               </div>' +
+        // '                               <div class="wide">' +
+        // '                                   <div class="line-height-12">' +
+        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDS.COUNT__</span>' +
+        // '                                       <span>beds</span>' +
+        // '                                   </div>' +
+        // '                               </div>' +
+        // '                           </div>' +
+        // '                       </div>' +
+        // '                       <div class="listing-general-info-item">' +
+        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        // '                               <div class="icon-wrap mb-2">' +
+        // '                                   <img src="/static/media/listing_bathroom.31f189cc.svg" alt="listing_bathroom">' +
+        // '                               </div>' +
+        // '                               <div class="wide">' +
+        // '                                   <div class="line-height-12">' +
+        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BATHROOM.COUNT__</span>' +
+        // '                                       <span>bathrooms</span>' +
+        // '                                   </div>' +
+        // '                               </div>' +
+        // '                           </div>' +
+        // '                       </div>' +
+        // '                   </div>' +
+        // '               </div>' +
+        // '               <div class="col-xl p-5 text-center listing-address">' +
+        // '                   <div class="icon-label d-flex align-items-center flex-column contained">' +
+        // '                       <div class="icon-wrap mb-2">' +
+        // '                           <img src="/static/media/listing_location.75e1758b.svg" alt="listing_location">' +
+        // '                       </div>' +
+        // '                       <div class="">__LISTING.BASEADDRESS__</div>' +
+        // '                   </div>' +
+        // '               </div>' +
+        // '           </div>' +
+        // '       </div>' +
         '       <div class="guesty-single-row">' +
         '           <div class="guesty-amenities">' +
         '               <h3>Amenities</h3>' +
@@ -245,7 +344,6 @@ var Guesty = (function (window, document, $) {
         '       </div>' +
         '   </div>' +
         '</div>';
-
 
     //  helpers
 
@@ -541,6 +639,7 @@ var Guesty = (function (window, document, $) {
         $listing = TEMPLATES.LISTING.replace('__LISTING.TITLE__', item.title);
         $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
         $listing = $listing.replace('__LISTING.ID__', item._id);
+        $listing = $listing.replace('__LISTING.PERMALINK__', __options.baseURI + '/listing/' + item._id);
         $listing = $listing.replace('__LISTING.ADDRESS__', item.address.full);
         $listing = $listing.replace('__LISTING.TAG__', (item.tags.length > 0 ? '' + item.tags.join(",") + '' : ''));
         $listing = $listing.replace('__LISTING.IMAGE__', item.picture['large']);
