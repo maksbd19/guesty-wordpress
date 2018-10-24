@@ -16,6 +16,8 @@ var Guesty = (function (window, document, $) {
     var _count = 0;
     var _limit = 7;
 
+    var listingID = null;
+
     var currentPage = 0;
     var $container = null;
     var singleView = false;
@@ -150,13 +152,13 @@ var Guesty = (function (window, document, $) {
         });
     };
 
-    G.handleAmenitiesLess = function(e){
+    G.handleAmenitiesLess = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").removeClass("open");
         return false;
     };
 
-    G.handleAmenitiesMore = function(e){
+    G.handleAmenitiesMore = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").addClass("open");
         return false;
@@ -180,7 +182,8 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTINGS_BOX = "" +
 
         '<div class="guesty-listing guesty-property guesty-layout-box">' +
-        '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-item">' +
+        // '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-item">' +
+        '   <a href="' + GUESTY_ARGS.baseURI + '/listing/__LISTING.ID__" data-id="__LISTING.ID__" class="guesty-single-handle">' +
         '       <div class="guesty-listing-box">' +
         '           <div class="guesty-thumbnail">' +
         '               <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
@@ -190,15 +193,15 @@ var Guesty = (function (window, document, $) {
         '                   <h2>__LISTING.TITLE__</h2>' +
         '                   <p class="guesty-box-meta">' +
         '                       <span class="guesty-meta-guest-count">__LISTING.META.GUESTS__</span>' +
-        '                       <span class="guesty-separator"></span>'+
+        '                       <span class="guesty-separator"></span>' +
         '                       <span class="guesty-meta-bedrooms-count">__LISTING.META.BEDROOMS__</span>' +
-        '                   </p>'+
-        '               </div>'+
+        '                   </p>' +
+        '               </div>' +
         '               <div class="guesty-footer-right">' +
         '                   <p class="guesty-price"><span class="guesty-price-from">From</span><span class="guesty-price-qty">__LISTING.PRICE__</span></p>' +
-        '               </div>'+
-        '               '+
-        '           </div>'+
+        '               </div>' +
+        '               ' +
+        '           </div>' +
         '       </div>' +
         '   </a>' +
         '</div>';
@@ -206,25 +209,39 @@ var Guesty = (function (window, document, $) {
     TEMPLATES.LISTING = "" +
         '<div class="guesty-listing-single-container">' +
         '   <div class="guesty-listing-single guesty-property-single">' +
-        '       <div class="guesty-close"><a href="#">&times;</a></div>' +
-        '       <div class="guesty-single-header"><h1>__LISTING.TITLE__</h1></div>' +
-        '       <div class="guesty-primary">' +
-        '           <div class="guesty-primary-image">' +
-        '               <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
+        // '       <div class="guesty-close"><a href="#">&times;</a></div>' +
+        '       <div class="guesty-single-row">' +
+        '           <div class="guesty-primary">' +
+        '               <div class="guesty-primary-image">' +
+        '                   <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
+        '               </div>' +
+        '               <div class="guesty-gallery">__LISTING.GALLERY__</div>' +
         '           </div>' +
-        '           <div class="guesty-gallery">__LISTING.GALLERY__</div>' +
-        '       </div>' +
-        '       <div class="guesty-secondary">' +
-        '           <div class="address"><i class="fas fa-map-marker-alt"></i> __LISTING.ADDRESS__</div>' +
-        '           <div class="tags">__LISTING.TAG__</div>' +
-        '           <div class="guesty-amenities">'+
-        '               <h3>Amenities</h3>'+
-        '               <div class="guesty-amenities-container">__LISTING.AMENITIES__</div>' +
-        '               <div class="amenities-handle">' +
-        '                   <a href="#" class="amenities-handle-more">More</a>'+
-        '                   <a href="#" class="amenities-handle-less">Less</a>'+
+        '           <div class="guesty-secondary">' +
+        '               <div class="guesty-secondary-header">' +
+        '                   <div class="guesty-secondary-header-left">' +
+        '                       <h1>__LISTING.TITLE__</h1>' +
+        '                   </div>' +
+        '                   <div class="guesty-secondary-header-right">' +
+        '                       <p class="guesry-listing-price">__LISTING.PRICE__</p>' +
+        '                       <p class="guesry-listing-per-night">Avg.per night</p>' +
+        '                   </div>' +
         '               </div>' +
         '           </div>' +
+        '       </div>' +
+        '       <div class="guesty-single-row">' +
+        '           <div class="guesty-amenities">' +
+        '               <h3>Amenities</h3>' +
+        '               <div class="guesty-amenities-container">__LISTING.AMENITIES__</div>' +
+        '               <div class="amenities-handle">' +
+        '                   <a href="#" class="amenities-handle-more">More</a>' +
+        '                   <a href="#" class="amenities-handle-less">Less</a>' +
+        '               </div>' +
+        '           </div>' +
+        '       </div>' +
+        '       <div class="guesty-single-row">' +
+        '           <div class="address"><i class="fas fa-map-marker-alt"></i> __LISTING.ADDRESS__</div>' +
+        '           <div class="tags">__LISTING.TAG__</div>' +
         '       </div>' +
         '   </div>' +
         '</div>';
@@ -237,12 +254,17 @@ var Guesty = (function (window, document, $) {
             throw new Error("Container not found, Guesty is initialized with no container element.");
         }
 
-        prepareListingsUI();
-        prepareSingleUI();
+        if (listingID) {
+            prepareSingleUI();
+        }
+        else {
+            prepareListingsUI();
+        }
+
         registerEvents();
     }
 
-    function prepareListingsUI(){
+    function prepareListingsUI() {
         currentPage = 0;
 
         buildListingUI({
@@ -250,11 +272,28 @@ var Guesty = (function (window, document, $) {
         });
     }
 
-    function prepareSingleUI(){}
+    function prepareSingleUI() {
+        getListing(listingID, {}, function (data) {
+            var $singleContainer = jQuery("<div/>").addClass('-guesty-single-container');
+            var item = data;
+
+            singleView = true;
+            singleViewItem = item;
+            singleViewItemID = listingID;
+
+            $container.append($singleContainer);
+
+            if (item) {
+                $singleContainer.append(buildSingleUI(item));
+            }
+        }, function (code, err) {
+            console.error(code, err);
+        });
+    }
 
     function buildListingUI(params) {
         $container.addClass("guesty-loading");
-        getListing(params, function (list) {
+        getListings(params, function (list) {
 
             if (!list || list.length === 0) {
                 return;
@@ -276,8 +315,8 @@ var Guesty = (function (window, document, $) {
                 $listing = $listing.replace(/__LISTING.ID__/gi, item._id);
                 $listing = $listing.replace('__LISTING.IMAGE__', item.picture['thumbnail']);
                 $listing = $listing.replace('__LISTING.IMAGE.ALT__', item.picture['caption'] || item.title);
-                $listing = $listing.replace('__LISTING.META.GUESTS__', item.accommodates + ' ' + (item.accommodates > 1 ? 'guests' : 'guest') );
-                $listing = $listing.replace('__LISTING.META.BEDROOMS__', item.bedrooms + ' ' + (item.bedrooms > 1 ? 'bedrooms' : 'bedroom') );
+                $listing = $listing.replace('__LISTING.META.GUESTS__', item.accommodates + ' ' + (item.accommodates > 1 ? 'guests' : 'guest'));
+                $listing = $listing.replace('__LISTING.META.BEDROOMS__', item.bedrooms + ' ' + (item.bedrooms > 1 ? 'bedrooms' : 'bedroom'));
                 $listing = $listing.replace('__LISTING.PRICE__', '$' + item.prices['basePriceUSD']);
 
                 $listings.push($listing);
@@ -334,7 +373,7 @@ var Guesty = (function (window, document, $) {
         return "<div class='guesty-pagination'>" + pagination.join("") + "</div>";
     }
 
-    function getListing(params, success, fail) {
+    function getListings(params, success, fail) {
         success = success || function () {
             };
         fail = fail || function () {
@@ -383,6 +422,42 @@ var Guesty = (function (window, document, $) {
         });
     }
 
+    function getListing(id, params, success, fail) {
+        success = success || function () {
+            };
+        fail = fail || function () {
+            };
+
+        var paramsStr = [];
+
+        for (var i in params) {
+            if (params.hasOwnProperty(i)) {
+                paramsStr.push(i + "=" + params[i]);
+            }
+        }
+
+        $.ajax({
+            method: 'GET',
+            url: GUESTY + 'listings/' + id + (paramsStr.length > 0 ? "?" + paramsStr.join("&") : ""),
+            headers: {
+                'Authorization': TOKEN
+            },
+            success: function (response) {
+
+                if (!response) {
+                    return fail("Invalid response", response);
+                }
+
+                console.log(response);
+
+                return success(response);
+            },
+            error: function (jqXHR, code, err) {
+                return fail(code, err);
+            }
+        });
+    }
+
     function buildSingleUI(item) {
         var $listing = '';
 
@@ -403,6 +478,7 @@ var Guesty = (function (window, document, $) {
         $listing = $listing.replace('__LISTING.ALT__', item.picture['caption'] || item.title);
         $listing = $listing.replace('__LISTING.GALLERY__', buildGalleryUI(item));
         $listing = $listing.replace('__LISTING.AMENITIES__', amenities.join(""));
+        $listing = $listing.replace('__LISTING.PRICE__', '$' + item.prices['basePriceUSD']);
 
         return $listing;
     }
@@ -417,9 +493,11 @@ var Guesty = (function (window, document, $) {
     }
 
 
-    return function (container, token) {
+    return function (container, token, id) {
         $container = $(container);
         TOKEN = token;
+
+        listingID = typeof id !== "undefined" ? id : null;
 
         prepareUI();
     }

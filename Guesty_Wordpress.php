@@ -57,25 +57,63 @@ final class Guesty_Wordpress
 		add_action( 'wp_enqueue_scripts', array( $this, 'custom_shortcode_scripts' ) );
 		add_action( 'template_include', array( $this, 'template_include' ), 99 );
 		add_shortcode( 'guesty-api', array( $this, 'shortcode' ) );
+
+//		add_filter('pre_get_posts', array($this, 'pre_get_posts'));
+		add_filter('rewrite_rules_array',array($this, 'listing_permalink'));
 	}
 
-	public function init(  )
+	public function init()
 	{
-		$api=$this->getApi();
-
-		if(isset($api['page_id']) && $api['page_id'] !== "" && ($page = get_post($api['page_id']))){
-			$page_name = $page->post_name;
-			add_filter('query_vars', array($this, 'add_query_var'), 0, 1);
-			add_rewrite_rule('^' . $page_name . '/listing/([^/]+)/?$','index.php?pagename=' . $page_name . '&listing=$matches[1]','top');
-		}
-
-
+		$this->add_query_vars();
 	}
 
-	public function add_query_var( $vars )
+	public function add_query_vars()
+	{
+		add_filter( 'query_vars', array( $this, 'add_listing_query_var' ), 0, 1 );
+	}
+
+	public function add_listing_query_var( $vars )
 	{
 		$vars[] = 'listing';
+
 		return $vars;
+	}
+
+	public function listing_permalink( $rules )
+	{
+		$api = $this->getApi();
+
+		$my_em_rules = array();
+
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
+			$page_id = $api['page_id'];
+			$page_slug = urldecode(preg_replace('/\/$/', '', str_replace( trailingslashit(home_url()), '', get_permalink($page_id)) ));
+			$page_slug = ( !empty($page_slug) ) ? untrailingslashit($page_slug) : $page_slug;
+
+			if( !empty($page_slug) ){
+				$my_em_rules['^' . $page_slug . '/listing/([a-zA-Z0-9]+)/?$'] = 'index.php?pagename=' . $page_slug . '&listing=$matches[1]';
+			}
+		}
+
+		return $my_em_rules + $rules;
+	}
+
+	public function add_rewrite_rule()
+	{
+		$api = $this->getApi();
+
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
+			$page_name = $page->post_name;
+			add_rewrite_rule( '^/listing/([^/]+)/?$', 'index.php?pagename=' . $page_name . '&listing=$matches[1]', 'top' );
+		}
+	}
+
+	public function pre_get_posts( $query )
+	{
+		if(is_admin() || !$query->is_main_query()){
+			return $query;
+		}
+
 	}
 
 	/**
@@ -149,6 +187,9 @@ final class Guesty_Wordpress
 
 		$location = $this->location();
 
+		global $wp_rewrite;
+		$wp_rewrite->flush_rules();
+
 		wp_safe_redirect( $location );
 
 		die( 0 );
@@ -185,11 +226,12 @@ final class Guesty_Wordpress
 
 	public function custom_shortcode_scripts()
 	{
-		if(!$this->has_shortcode()){
+		if ( ! $this->has_shortcode() ) {
 			return false;
 		}
-		
+
 		global $post;
+
 		wp_enqueue_script( 'guesty-main' );
 		wp_enqueue_style( 'guesty-styles' );
 		wp_enqueue_style( 'font-awesome' );
@@ -238,8 +280,6 @@ final class Guesty_Wordpress
 
 	public function template_include( $template )
 	{
-		global $wp_rewrite;
-		prefy(get_query_var('listing'), $wp_rewrite, $this->has_shortcode(), $template);
 		if ( is_page( 'portfolio' ) ) {
 			$new_template = locate_template( array( 'portfolio-page-template.php' ) );
 			if ( ! empty( $new_template ) ) {
