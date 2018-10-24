@@ -210,11 +210,11 @@ var Guesty = (function (window, document, $) {
         '<div class="guesty-listing-single-container">' +
         '   <div class="guesty-listing-single guesty-property-single">' +
         // '       <div class="guesty-close"><a href="#">&times;</a></div>' +
-        '       <div class="guesty-single-row">' +
+        '       <div class="guesty-single-row guesty-single-row-full">' +
         '           <div class="guesty-primary">' +
         '               <div class="guesty-primary-image">' +
-        '                   <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
-        '               </div>' +
+        // '                   <img src="__LISTING.IMAGE__" alt="__LISTING.IMAGE.ALT__">' +
+        '               __LISTING.CAROUSEL__</div>' +
         '               <div class="guesty-gallery">__LISTING.GALLERY__</div>' +
         '           </div>' +
         '           <div class="guesty-secondary">' +
@@ -362,6 +362,74 @@ var Guesty = (function (window, document, $) {
         return "<div class='guesty-gallery-thumb guesty-gallery-" + slice + "'>" + gallery.join("") + "</div>";
     }
 
+    function buildCarouselUI(item, slice) {
+        var gallery = [];
+        var pictures = item.pictures;
+        var imgCount = pictures.length;
+
+        var $item = "";
+
+        var picture = item.picture;
+        var large = picture.large || null;
+
+        if (large) {
+
+            $item += '<input type="radio" name="radio-buttons" id="img-0" checked />';
+            $item += '<li class="slide-container">';
+            $item += '  <div class="slide-image">';
+            $item += '      <img src="' + large + '">';
+            $item += '  </div>';
+            $item += '  <div class="carousel-controls">';
+            $item += '      <label for="img-' + imgCount + '" class="prev-slide">';
+            $item += '          <span>&lsaquo;</span>';
+            $item += '      </label>';
+            $item += '      <label for="img-1" class="next-slide">';
+            $item += '          <span>&rsaquo;</span>';
+            $item += '      </label>';
+            $item += '  </div>';
+            $item += '</li>';
+
+            gallery.push($item);
+        }
+
+        if (pictures && pictures.length > 0) {
+            if (slice) {
+                pictures = pictures.splice(0, slice);
+            }
+            for (var i = 0; i < pictures.length; i++) {
+                large = pictures[i].large || null;
+                if (large) {
+                    $item = "";
+
+                    $item += '<input type="radio" name="radio-buttons" id="img-' + (i+1) + '" checked />';
+                    $item += '<li class="slide-container">';
+                    $item += '  <div class="slide-image">';
+                    $item += '      <img src="' + large + '">';
+                    $item += '  </div>';
+                    $item += '  <div class="carousel-controls">';
+                    $item += '      <label for="img-' + i + '" class="prev-slide">';
+                    $item += '          <span>&lsaquo;</span>';
+                    $item += '      </label>';
+                    $item += '      <label for="img-' + ((imgCount - i) > 1 ? (i + 2) : 0) + '" class="next-slide">';
+                    $item += '          <span>&rsaquo;</span>';
+                    $item += '      </label>';
+                    $item += '  </div>';
+                    $item += '</li>';
+
+                    gallery.push($item);
+                }
+            }
+        }
+
+        var $html = '';
+
+        $html += '<ul class="slides">';
+        $html += gallery.join("");
+        $html += '</ul>';
+
+        return "<div class='guesty-gallery-thumb guesty-gallery-" + (slice || 'full') + "'>" + $html + "</div>";
+    }
+
     function buildPaginationUI() {
 
         var pages = Math.ceil(_count / _limit);
@@ -476,8 +544,9 @@ var Guesty = (function (window, document, $) {
         $listing = $listing.replace('__LISTING.ADDRESS__', item.address.full);
         $listing = $listing.replace('__LISTING.TAG__', (item.tags.length > 0 ? '' + item.tags.join(",") + '' : ''));
         $listing = $listing.replace('__LISTING.IMAGE__', item.picture['large']);
+        $listing = $listing.replace('__LISTING.CAROUSEL__', buildCarouselUI(item));
         $listing = $listing.replace('__LISTING.ALT__', item.picture['caption'] || item.title);
-        $listing = $listing.replace('__LISTING.GALLERY__', buildGalleryUI(item));
+        // $listing = $listing.replace('__LISTING.GALLERY__', buildGalleryUI(item));
         $listing = $listing.replace('__LISTING.AMENITIES__', amenities.join(""));
         $listing = $listing.replace('__LISTING.PRICE__', '$' + item.prices['basePriceUSD']);
 
@@ -498,13 +567,13 @@ var Guesty = (function (window, document, $) {
         $container = $(container);
         TOKEN = token;
 
-        for(var i in GUESTY_ARGS){
-            if(GUESTY_ARGS.hasOwnProperty(i)){
+        for (var i in GUESTY_ARGS) {
+            if (GUESTY_ARGS.hasOwnProperty(i)) {
                 __options[i] = GUESTY_ARGS[i];
             }
         }
 
-        if(__options.limit && !isNaN(parseInt(__options.limit))){
+        if (__options.limit && !isNaN(parseInt(__options.limit))) {
             _limit = __options.limit;
         }
 
