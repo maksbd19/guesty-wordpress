@@ -22,16 +22,11 @@ define( 'GUESTY_WORDPRESS', true );
 define( 'GUESTY_WORDPRESS_VERSION', '1.0.0' );
 
 require_once( plugin_dir_path( __FILE__ ) . '/helpers/functions.php' );
-require_once( plugin_dir_path( __FILE__ ) . '/vendor/autoload.php' );
-require_once( plugin_dir_path( __FILE__ ) . '/class/Guesty.php' );
 
 //  singleton
 
 final class Guesty_Wordpress
 {
-	private $client = null;
-	private $guesty = null;
-
 	private $base_path = "";
 	private $base_url = "";
 	private $base_location = "";
@@ -49,8 +44,6 @@ final class Guesty_Wordpress
 
 	private function setup()
 	{
-		$this->client        = new \GuzzleHttp\Client();
-		$this->guesty        = new Guesty();
 		$this->base_path     = plugin_dir_path( __FILE__ );
 		$this->base_url      = plugin_dir_url( __FILE__ );
 		$this->base_location = admin_url( 'options-general.php?page=' . $this->menu_slug );
@@ -226,11 +219,6 @@ final class Guesty_Wordpress
 		}
 
 		return $template;
-	}
-
-	public function getListing()
-	{
-		return $this->guesty->getListing();
 	}
 
 	/**
