@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>hangers</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polyline id="path-1" points="0 0 26 0 26 15 0 15"></polyline>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-918.000000, -1763.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="hangers" transform="translate(630.000000, 357.000000)">
+                    <rect id="9" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <g id="Group-3" transform="translate(7.000000, 11.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M1.6315,14.005 L24.4225,14.005" id="Stroke-1" stroke="#464646" mask="url(#mask-2)"></path>
+                    </g>
+                    <path d="M20,15.809 L20,14.546 C20.709,14.442 21.257,13.802 21.257,13.031 C21.257,12.187 20.602,11.5 19.797,11.5 C19.053,11.5 18.439,12.088 18.351,12.844" id="Stroke-4" stroke="#464646"></path>
+                    <path d="M25.8236,20.4124 C23.7806,19.5384 22.6926,18.0624 22.6926,18.0624 C21.6156,15.8734 20.0006,15.8734 20.0006,15.8734 L19.9996,15.8734 C19.9996,15.8734 18.3836,15.8734 17.3066,18.0624 C17.3066,18.0624 16.2196,19.5384 14.1766,20.4124 C9.9676,22.2124 6.5346,22.4394 7.7466,25.3344 L20.0006,19.8584 L32.2536,25.3344 C33.4646,22.4394 30.0306,22.2124 25.8236,20.4124 L25.8236,20.4124 Z" id="Stroke-6" stroke="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

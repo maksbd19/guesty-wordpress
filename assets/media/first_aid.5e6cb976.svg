@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>first aid</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-918.000000, -1683.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="first-aid" transform="translate(630.000000, 277.000000)">
+                    <rect id="7" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M31.5,13.1301 C31.5,12.3151 30.834,11.6541 30.012,11.6541 L9.988,11.6541 C9.166,11.6541 8.5,12.3151 8.5,13.1301 L8.5,26.0241 C8.5,26.8391 9.166,27.5001 9.988,27.5001 L30.012,27.5001 C30.834,27.5001 31.5,26.8391 31.5,26.0241 L31.5,13.1301 L31.5,13.1301 Z" id="Stroke-1" stroke="#464646"></path>
+                    <path d="M15.0894,11.6091 L15.0894,9.2521 C15.0894,8.4361 15.7554,7.7751 16.5774,7.7751 L23.7204,7.7751 C24.5414,7.7751 25.2084,8.4361 25.2084,9.2521 L25.2084,11.6091" id="Stroke-3" stroke="#464646"></path>
+                    <path d="M19.9505,24.6463 C22.8215,24.6463 25.1485,22.3383 25.1485,19.4903 C25.1485,16.6433 22.8215,14.3343 19.9505,14.3343 C17.0795,14.3343 14.7525,16.6433 14.7525,19.4903 C14.7525,22.3383 17.0795,24.6463 19.9505,24.6463 L19.9505,24.6463 Z" id="Stroke-5" stroke="#464646"></path>
+                    <path d="M17.2317,19.5773 L22.7687,19.5773" id="Stroke-7" stroke="#464646"></path>
+                    <path d="M20.0001,16.8311 L20.0001,22.3231" id="Stroke-9" stroke="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

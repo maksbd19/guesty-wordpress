@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="29px" height="39px" viewBox="0 0 29 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>pin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Default" transform="translate(-944.000000, -709.000000)" stroke="#464646">
+            <g id="about" transform="translate(247.000000, 680.000000)">
+                <g id="main-icons" transform="translate(22.000000, 24.000000)">
+                    <g id="Passeig-De-Gracia-84-+-pin" transform="translate(535.000000, 6.000000)">
+                        <path d="M154.499,0 C147.044,0 141,6.134 141,13.703 C141,23.67 153.739,37 154.889,37 C156.032,37 168,22.495 168,13.703 C167.999,6.134 161.956,0 154.499,0 L154.499,0 Z M154.435,18.283 C151.509,18.283 149.138,15.941 149.138,13.05 C149.138,10.161 151.508,7.817 154.435,7.817 C157.362,7.817 159.733,10.161 159.733,13.05 C159.733,15.941 157.362,18.283 154.435,18.283 L154.435,18.283 Z" id="pin"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

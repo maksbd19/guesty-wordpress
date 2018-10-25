@@ -156,13 +156,25 @@ var Guesty = (function (window, document, $) {
     G.handleAmenitiesLess = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").removeClass("open");
-
         return false;
 
     };
     G.handleAmenitiesMore = function (e) {
         e.preventDefault();
         $container.find(".guesty-amenities").addClass("open");
+        return false;
+
+    };
+
+    G.handleHouserulesMore = function (e) {
+        e.preventDefault();
+        $container.find(".guesty-houserules").addClass("open");
+        return false;
+
+    };
+    G.handleHouserulesLess = function (e) {
+        e.preventDefault();
+        $container.find(".guesty-houserules").removeClass("open");
         return false;
 
     };
@@ -261,82 +273,133 @@ var Guesty = (function (window, document, $) {
         '           </div>' +
         '       </div>' +
         '       <div class="guesty-single-row">' +
-        '           <div class="row no-gutters separator">' +
-        '               <div class="col-xl p-sm-5 py-5 px-2 listing-general-info-row">' +
-        '                   <div class="d-flex">' +
-        '                       <div class="listing-general-info-item mr-4">' +
-        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        '                               <div class="icon-wrap mb-2">' +
-        '                                   <img src="/static/media/listing_guests.b6f69025.svg" alt="listing_guests">' +
+        '           <div class="mt-sm-6 bg-faded-2 listing-general-info">' +
+        '               <div class="row no-gutters separator">' +
+        '                   <div class="col-xl p-sm-5 py-5 px-2 listing-general-info-row">' +
+        '                       <div class="d-flex">' +
+        '                          <div class="listing-general-info-item mr-4">' +
+        '                               <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                                   <div class="icon-wrap mb-2">' +
+        '                                       <img src="_@_ASSETS_@_/listing_guests.b6f69025.svg" alt="listing_guests">' +
+        '                                   </div>' +
+        '                                   <div class="wide">' +
+        '                                       <div class="line-height-12">' +
+        '                                          <span class="d-block d-sm-inline text-center">__LISTING.GUESTS.COUNT__</span>' +
+        '                                           <span>guests</span>' +
+        '                                       </div>' +
+        '                                   </div>' +
         '                               </div>' +
-        '                               <div class="wide">' +
-        '                                   <div class="line-height-12">' +
-        '                                       <span class="d-block d-sm-inline text-center">__LISTING.GUESTS.COUNT__</span>' +
-        '                                       <span>guests</span>' +
+        '                           </div>' +
+        '                           <div class="listing-general-info-item mr-4">' +
+        '                               <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                                   <div class="icon-wrap mb-2">' +
+        '                                       <img src="_@_ASSETS_@_/listing_bedrooms.7ddd6a2a.svg" alt="listing_bedrooms">' +
+        '                                   </div>' +
+        '                                  <div class="wide">' +
+        '                                       <div class="line-height-12">' +
+        '                                           <span class="d-block d-sm-inline text-center">__LISTING.BEDROOMS.COUNT__</span>' +
+        '                                           <span>bedrooms</span>' +
+        '                                       </div>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                           <div class="listing-general-info-item mr-4">' +
+        '                               <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                                  <div class="icon-wrap mb-2">' +
+        '                                       <img src="_@_ASSETS_@_/listing_beds.7143f54e.svg" alt="listing_beds">' +
+        '                                   </div>' +
+        '                                   <div class="wide">' +
+        '                                       <div class="line-height-12">' +
+        '                                           <span class="d-block d-sm-inline text-center">__LISTING.BEDS.COUNT__</span>' +
+        '                                           <span>beds</span>' +
+        '                                       </div>' +
+        '                                   </div>' +
+        '                              </div>' +
+        '                           </div>' +
+        '                           <div class="listing-general-info-item">' +
+        '                               <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                                   <div class="icon-wrap mb-2">' +
+        '                                       <img src="_@_ASSETS_@_/listing_bathroom.31f189cc.svg" alt="listing_bathroom">' +
+        '                                   </div>' +
+        '                                  <div class="wide">' +
+        '                                       <div class="line-height-12">' +
+        '                                           <span class="d-block d-sm-inline text-center">__LISTING.BATHROOM.COUNT__</span>' +
+        '                                           <span>bathrooms</span>' +
+        '                                       </div>' +
         '                                   </div>' +
         '                               </div>' +
         '                           </div>' +
         '                       </div>' +
-        '                       <div class="listing-general-info-item mr-4">' +
-        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        '                               <div class="icon-wrap mb-2">' +
-        '                                   <img src="/static/media/listing_bedrooms.7ddd6a2a.svg" alt="listing_bedrooms">' +
-        '                               </div>' +
-        '                               <div class="wide">' +
-        '                                   <div class="line-height-12">' +
-        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDROOMS.COUNT__</span>' +
-        '                                       <span>bedrooms</span>' +
-        '                                   </div>' +
-        '                               </div>' +
-        '                           </div>' +
+        '                  </div>' +
+        '                   <div class="col-xl p-5 text-center listing-address">' +
+        '                       <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                           <div class="icon-wrap mb-2">' +
+        '                               <img src="_@_ASSETS_@_/listing_location.75e1758b.svg" alt="listing_location">' +
+        '                          </div>' +
+        '                           <div class="">__LISTING.BASEADDRESS__</div>' +
         '                       </div>' +
-        '                       <div class="listing-general-info-item mr-4">' +
-        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        '                               <div class="icon-wrap mb-2">' +
-        '                                   <img src="/static/media/listing_beds.7143f54e.svg" alt="listing_beds">' +
-        '                               </div>' +
-        '                               <div class="wide">' +
-        '                                   <div class="line-height-12">' +
-        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDS.COUNT__</span>' +
-        '                                       <span>beds</span>' +
-        '                                   </div>' +
-        '                               </div>' +
-        '                           </div>' +
-        '                       </div>' +
-        '                       <div class="listing-general-info-item">' +
-        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        '                               <div class="icon-wrap mb-2">' +
-        '                                   <img src="/static/media/listing_bathroom.31f189cc.svg" alt="listing_bathroom">' +
-        '                               </div>' +
-        '                               <div class="wide">' +
-        '                                   <div class="line-height-12">' +
-        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BATHROOM.COUNT__</span>' +
-        '                                       <span>bathrooms</span>' +
-        '                                   </div>' +
-        '                               </div>' +
-        '                           </div>' +
-        '                       </div>' +
-        '                   </div>' +
-        '               </div>' +
-        '               <div class="col-xl p-5 text-center listing-address">' +
-        '                   <div class="icon-label d-flex align-items-center flex-column contained">' +
-        '                       <div class="icon-wrap mb-2">' +
-        '                           <img src="/static/media/listing_location.75e1758b.svg" alt="listing_location">' +
-        '                       </div>' +
-        '                       <div class="">__LISTING.BASEADDRESS__</div>' +
         '                   </div>' +
         '               </div>' +
         '           </div>' +
-        '       </div>' +
-        '       <div class="guesty-single-row">' +
-        '           <div class="guesty-amenities">' +
-        '               <h3>Amenities</h3>' +
-        '               <div class="guesty-amenities-container">__LISTING.AMENITIES__</div>' +
+        '           <div class="separator pt-5 clearfix">' +
+        '               <div class="listing-page-section px-5" style="max-height: none;">' +
+        '                   <div class="row no-gutters pb-5">' +
+        '                       <div class="col-sm">' +
+        '                           <h5>Check in and out</h5>' +
+        '                           <p class="wide">Check in: __LISTING.CHECKIN__<br>Check out: __LISTING.CHECKOUT__</p>' +
+        '                       </div>' +
+        '                       <div class="col-sm">' +
+        '                           <h5>Prices</h5>' +
+        '                           <div class="wide">' +
+        '                               <div>Extra people: __LISTING.EXTRAPERNIGHT__ per night</div>' +
+        '                          </div>' +
+        '                       </div>' +
+        '                   </div>' +
+        '               </div>' +
+        '           </div>'+
+        '           <div class="separator pt-5 clearfix guesty-amenities">' +
+        '               <div class="px-5 guesty-amenities-block">' +
+        '                   <h5>Amenities</h5>' +
+        '                   <div class="row no-gutters">__LISTING.AMENITIES__</div>' +
+        '               </div>' +
         '               <div class="amenities-handle">' +
-        '                   <a href="#" class="amenities-handle-more">More</a>' +
-        '                   <a href="#" class="amenities-handle-less">Less</a>' +
+        '                  <button class="float-right mt-3 btn btn-primary btn-link amenities-handle-more" style="color: rgb(226, 36, 0);">Show More</button>' +
+        '                   <button class="float-right mt-3 btn btn-primary btn-link amenities-handle-less" style="color: rgb(226, 36, 0);">Show less</button>' +
         '               </div>' +
         '           </div>' +
+        '           <div class="separator pt-5 clearfix guesty-houserules">' +
+        '               <div class="listing-page-section px-5">' +
+        '                   <div class="row">' +
+        '                       <div class="col-sm">' +
+        '                           <h5 class="mb-5">Description</h5>' +
+        '                               <div class="listing-page-sep">' +
+        '                                   <h6 class="mb-0 h6-text">The Space</h6>' +
+        '                                   <p class="white-space-pre-wrap">__LISTING.PD.SPACE__</p>' +
+        '                               </div>' +
+        '                               <div class="listing-page-sep">' +
+        '                                   <h6 class="mb-0 h6-text">Guest Access</h6>' +
+        '                                   <p class="white-space-pre-wrap">__LISTING.PD.ACCESS__</p>' +
+        '                               </div>' +
+        '                               <div class="listing-page-sep">' +
+        '                                   <h6 class="mb-0 h6-text">Interaction</h6>' +
+        '                                   <p class="white-space-pre-wrap">__LISTING.PD.INTERACTION__</p>' +
+        '                               </div>' +
+        '                               <div class="listing-page-sep">' +
+        '                                   <h6 class="mb-0 h6-text">Getting Around</h6>' +
+        '                                   <p class="white-space-pre-wrap">__LISTING.PD.TRANSIT__</p>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                           <div class="col-sm">' +
+        '                               <h5 class="mb-5">Staying Rules</h5>' +
+        '                               <ul>__LISTING.PD.HOUSERULES__</ul>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                   </div>' +
+        '                   <div class="houserules-handle">' +
+            '                   <button class="float-right mt-3 btn btn-primary btn-link houserules-handle-more" style="color: rgb(226, 36, 0);">Show More</button>' +
+        '                       <button class="float-right mt-3 btn btn-primary btn-link houserules-handle-less" style="color: rgb(226, 36, 0);">Show less</button>' +
+        '                   </div>' +
+        '               </div>' +
         '       </div>' +
         '       <div class="guesty-single-row">' +
         '           <div class="address"><i class="fas fa-map-marker-alt"></i> __LISTING.ADDRESS__</div>' +
@@ -630,14 +693,43 @@ var Guesty = (function (window, document, $) {
 
         var amenities = [];
 
+        function listingAsset(title){
+            return (typeof __options.assets[title] !== "undefined" && __options.assets[title] !== "") ? __options.assetsURI + '/' + __options.assets[title] : "";
+        }
+
         if (item.amenities.length > 0) {
             for (var i = 0; i < item.amenities.length; i++) {
-                amenities.push("<span class='guesty-amenities-item'><i class='far fa-check-circle'></i><span class='amenity-name'>" + item.amenities[i] + '</span></span>');
+                var asset = listingAsset(item.amenities[i]);
+
+                if(asset === ""){
+                    continue;
+                }
+
+                var $item = '' +
+                    '<div class="amenity col-md-4 col-sm-6 mb-3">' +
+                    '   <div class="icon-label d-flex align-items-center flex-row">' +
+                    '       <div class="icon-wrap"><img src="' + asset + '" alt="' + item.amenities[i].toLowerCase() + '"></div>' +
+                    '       <div class="ml-1">' + item.amenities[i] + '</div>' +
+                    '   </div>' +
+                    '</div>';
+
+                amenities.push($item);
             }
         }
 
+        var houseRules = "";
+
+        try{
+            var hr = item.publicDescription['houseRules'];
+            
+            houseRules = "<li>" + hr.split("\n").map(function(i) {
+                return i.substr(2, i.length - 2);
+            }).join("</li><li>") + "</li>";
+        }
+        catch(e){}
+
+
         $listing = TEMPLATES.LISTING.replace('__LISTING.TITLE__', item.title);
-        $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
         $listing = $listing.replace('__LISTING.ID__', item._id);
         $listing = $listing.replace('__LISTING.PERMALINK__', __options.baseURI + '/listing/' + item._id);
         $listing = $listing.replace('__LISTING.ADDRESS__', item.address.full);
@@ -645,9 +737,24 @@ var Guesty = (function (window, document, $) {
         $listing = $listing.replace('__LISTING.IMAGE__', item.picture['large']);
         $listing = $listing.replace('__LISTING.CAROUSEL__', buildCarouselUI(item));
         $listing = $listing.replace('__LISTING.ALT__', item.picture['caption'] || item.title);
-        // $listing = $listing.replace('__LISTING.GALLERY__', buildGalleryUI(item));
         $listing = $listing.replace('__LISTING.AMENITIES__', amenities.join(""));
         $listing = $listing.replace('__LISTING.PRICE__', '$' + item.prices['basePriceUSD']);
+        $listing = $listing.replace('__LISTING.GUESTS.COUNT__', item.accommodates);
+        $listing = $listing.replace('__LISTING.BEDROOMS.COUNT__', item.bedrooms);
+        $listing = $listing.replace('__LISTING.BEDS.COUNT__', item.beds);
+        $listing = $listing.replace('__LISTING.BATHROOM.COUNT__', item.bathrooms);
+        $listing = $listing.replace('__LISTING.BASEADDRESS__', item.address['city'] + ', ' + item.address['country']);
+        $listing = $listing.replace('__LISTING.CHECKIN__', item.defaultCheckInTime);
+        $listing = $listing.replace('__LISTING.CHECKOUT__', item.defaultCheckOutTime);
+        $listing = $listing.replace('__LISTING.EXTRAPERNIGHT__', '$' + item.prices['extraPersonFee']);
+        $listing = $listing.replace('__LISTING.PD.SPACE__', item.publicDescription['space']);
+        $listing = $listing.replace('__LISTING.PD.ACCESS__', item.publicDescription['access']);
+        $listing = $listing.replace('__LISTING.PD.INTERACTION__', item.publicDescription['interactionWithGuests']);
+        $listing = $listing.replace('__LISTING.PD.TRANSIT__', item.publicDescription['transit']);
+        $listing = $listing.replace('__LISTING.PD.HOUSERULES__', houseRules);
+
+        $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
+        $listing = $listing.replace(/_@_ASSETS_@_/gi, __options.assetsURI);
 
         return $listing;
     }
@@ -659,6 +766,8 @@ var Guesty = (function (window, document, $) {
         $container.on("click", ".guesty-gallery-item", G.openGalleryItem);
         $container.on("click", ".amenities-handle-more", G.handleAmenitiesMore);
         $container.on("click", ".amenities-handle-less", G.handleAmenitiesLess);
+        $container.on("click", ".houserules-handle-more", G.handleHouserulesMore);
+        $container.on("click", ".houserules-handle-less", G.handleHouserulesLess);
     }
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="19px" viewBox="0 0 10 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage" transform="translate(-150.000000, -1500.000000)" fill="#fff">
+            <g id="featured" transform="translate(150.000000, 1324.000000)">
+                <path d="M9.47738227,185.068308 C9.50312898,184.915712 9.45981983,184.752713 9.34334373,184.636237 L0.849210846,176.142104 C0.659634322,175.952528 0.341791967,175.951268 0.146529821,176.14653 C-0.0430217524,176.336081 -0.0507138032,176.656393 0.142104065,176.849211 L8.36404424,185.071151 L0.142104065,193.293091 C-0.0474724596,193.482668 -0.0487323246,193.80051 0.146529821,193.995772 C0.336081395,194.185324 0.656392978,194.193016 0.849210846,194.000198 L9.34334373,185.506065 C9.46013295,185.389276 9.50545194,185.223807 9.47738227,185.068308 Z" id="left" transform="translate(4.742724, 185.070705) rotate(-180.000000) translate(-4.742724, -185.070705) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

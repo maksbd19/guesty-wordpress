@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>air condition</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-603.000000, -1443.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="air-condition" transform="translate(315.000000, 37.000000)">
+                    <rect id="1" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M30.842,20.3525 L9.158,20.3525 C8.867,20.3525 8.5,17.8025 8.5,14.1835 C8.5,10.5655 8.867,9.0145 9.158,9.0145 L30.842,9.0145 C31.133,9.0145 31.5,10.5255 31.5,14.1835 C31.5,17.8425 31.133,20.3525 30.842,20.3525 L30.842,20.3525 Z" id="Stroke-1" stroke="#464646"></path>
+                    <polyline id="Stroke-3" stroke="#464646" points="30.0535 20.3525 29.7615 17.4695 10.2385 17.4695 9.9455 20.3525"></polyline>
+                    <path d="M31.496,13.1328 L8.503,13.1328" id="Stroke-5" stroke="#464646"></path>
+                    <path d="M8.5255,15.2256 L31.4745,15.2256" id="Stroke-7" stroke="#464646"></path>
+                    <path d="M21.062,22.3125 L21.062,31.0005" id="Stroke-9" stroke="#464646"></path>
+                    <path d="M23.687,22.3125 L23.687,26.6565" id="Stroke-12" stroke="#464646"></path>
+                    <path d="M17.8745,22.3125 L17.8745,28.0765" id="Stroke-14" stroke="#464646"></path>
+                    <path d="M15.437,22.3125 L15.437,23.9995" id="Stroke-16" stroke="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

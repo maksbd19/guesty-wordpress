@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="13px" height="8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>dropdown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-interactions" transform="translate(-557.000000, -537.000000)" fill="#464646">
+            <g id="main" transform="translate(0.000000, 100.000000)">
+                <g id="booking-engine" transform="translate(339.000000, 416.000000)">
+                    <g id="destination">
+                        <path d="M227.652231,25.1609843 C227.652828,25.0296143 227.603754,24.8966468 227.503094,24.7959869 L221.859909,19.1528022 C221.656833,18.9497263 221.34123,18.9507053 221.145967,19.1459674 C220.956416,19.335519 220.953765,19.6608721 221.152802,19.859909 L226.449268,25.1563751 L221.152802,30.4528412 C220.949726,30.6559171 220.950705,30.9715206 221.145967,31.1667827 C221.335519,31.3563343 221.660872,31.3589848 221.859909,31.1599479 L227.503094,25.5167633 C227.504236,25.5156214 227.505371,25.514476 227.5065,25.513327 C227.31098,25.7051951 226.997876,25.7049824 226.795987,25.5030937 L226.449268,25.1563751 Z" id="dropdown" transform="translate(224.326118, 25.154545) rotate(90.000000) translate(-224.326118, -25.154545) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

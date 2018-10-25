@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="22px" height="40px" viewBox="0 0 22 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>bathroom</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Default" transform="translate(-573.000000, -708.000000)" stroke="#464646">
+            <g id="about" transform="translate(247.000000, 680.000000)">
+                <g id="main-icons" transform="translate(22.000000, 24.000000)">
+                    <g id="bathroom" transform="translate(304.000000, 4.000000)">
+                        <path d="M16.7661,30.3019 L18.3031,37.8239 C18.3031,38.7489 17.6561,39.4999 16.8541,39.4999 L5.0611,39.4999 C4.2601,39.4999 3.6111,38.7489 3.6111,37.8239 L5.1711,30.1889" id="Stroke-1"></path>
+                        <path d="M1.3539,18.6615 L1.3539,6.3185 C1.3539,5.2935 2.2019,4.4635 3.2479,4.4635 L4.2209,4.4635" id="Stroke-3"></path>
+                        <path d="M17.6722,4.4633 L18.6672,4.4633 C19.7132,4.4633 20.5622,5.2933 20.5622,6.3183 L20.5622,18.6613" id="Stroke-5"></path>
+                        <path d="M21.5,20.1483 C21.5,20.6093 21.073,25.7123 17.872,28.8483 C16.256,30.4313 14.692,34.7753 10.941,34.7753 C7.189,34.7753 5.658,30.3883 4.028,28.7923 C0.851,25.6833 0.5,20.6063 0.5,20.1483 C0.5,19.3083 1.021,18.6283 1.666,18.6283 L20.333,18.6283 C20.978,18.6283 21.5,19.3083 21.5,20.1483 L21.5,20.1483 Z" id="Stroke-7"></path>
+                        <path d="M3.7171,18.6279 C2.8181,16.9439 2.2961,13.3539 2.2961,11.1889 C2.2961,5.2839 6.1751,0.4999 10.9581,0.4999 C15.7401,0.4999 19.6181,5.2839 19.6181,11.1889 C19.6181,13.3479 19.0991,16.9319 18.2071,18.6119" id="Stroke-9"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

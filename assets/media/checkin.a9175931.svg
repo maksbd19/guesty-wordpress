@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>checkin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-288.000000, -1683.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="checkin" transform="translate(0.000000, 277.000000)">
+                    <rect id="7" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M24.4515,28.2635 L25.2705,27.4415 C26.6335,27.5385 28.0285,27.0695 29.0715,26.0245 C30.9765,24.1085 30.9765,21.0065 29.0695,19.0925 C27.1635,17.1785 24.0735,17.1785 22.1675,19.0925 C21.1255,20.1385 20.6575,21.5405 20.7545,22.9085 L19.7955,23.8725 L20.4025,24.4825 L15.7175,29.1865 L15.7615,32.4555 L19.0165,32.5005 L19.4435,32.0715 L19.1455,30.9565 L20.2565,31.2555 L21.0615,30.4475 L20.7635,29.3325 L21.8745,29.6305 L22.6795,28.8225 L22.3805,27.7075 L23.4935,28.0065" id="Stroke-1" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M27.6057,22.3098 C27.1247,22.7928 26.3457,22.7928 25.8657,22.3098 C25.3847,21.8268 25.3847,21.0448 25.8657,20.5628 C26.3457,20.0808 27.1247,20.0808 27.6057,20.5628 C28.0867,21.0448 28.0867,21.8268 27.6057,22.3098 L27.6057,22.3098 Z" id="Stroke-3" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21.4142,25.382 L20.3722,24.337" id="Stroke-5" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M25.9792,14.2353 C25.9792,15.6003 24.8782,16.7063 23.5192,16.7063 L11.9602,16.7063 C10.6022,16.7063 9.5002,15.6003 9.5002,14.2353 L9.5002,10.3533 C9.5002,8.9883 10.6022,7.8823 11.9602,7.8823 L23.5192,7.8823 C24.8782,7.8823 25.9792,8.9883 25.9792,10.3533 L25.9792,14.2353 L25.9792,14.2353 Z" id="Stroke-7" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M23.7906,13.477 L23.7906,13.477 C23.1796,13.477 22.6836,12.978 22.6836,12.364 C22.6836,11.75 23.1796,11.253 23.7906,11.253" id="Stroke-9" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M26.8096,21.0603 C28.1676,21.0603 29.2756,19.9893 29.2756,18.6233 L29.2756,14.8363 C29.2756,13.4713 28.2876,12.2943 26.9296,12.2943 L23.2326,12.2943" id="Stroke-11" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M16.0917,13.477 C16.0917,14.094 15.5037,14.5 14.8897,14.5 L14.1347,14.5 C13.5187,14.5 12.7957,14.094 12.7957,13.477 L12.7957,10.957 C12.7957,10.34 13.3127,10.088 13.9287,10.088 L15.0277,10.088 C15.6407,10.088 16.0917,10.34 16.0917,10.957 L16.0917,13.477 L16.0917,13.477 Z" id="Stroke-13" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M18.2739,9.6023 C18.8899,9.6023 19.3879,10.3403 19.3879,10.9573 L19.3879,13.9483" id="Stroke-15" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M17.7396,14.5002 L21.0356,14.5002" id="Stroke-17" stroke="#464646" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -13,7 +13,8 @@ Author URI: http://makjoybd/
 */
 
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) )
+{
 	die();
 }
 
@@ -62,6 +63,23 @@ final class Guesty_Wordpress
 		add_filter( 'rewrite_rules_array', array( $this, 'listing_permalink' ) );
 	}
 
+	/**
+	 * Call this method to get singleton
+	 *
+	 * @return Guesty_Wordpress
+	 */
+	public static function Instance()
+	{
+		static $instance = false;
+		if ( $instance === false )
+		{
+			// Late static binding (PHP 5.3+)
+			$instance = new static();
+		}
+
+		return $instance;
+	}
+
 	public function init()
 	{
 		$this->add_query_vars();
@@ -85,12 +103,14 @@ final class Guesty_Wordpress
 
 		$my_em_rules = array();
 
-		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) )
+		{
 			$page_id   = $api['page_id'];
 			$page_slug = urldecode( preg_replace( '/\/$/', '', str_replace( trailingslashit( home_url() ), '', get_permalink( $page_id ) ) ) );
 			$page_slug = ( ! empty( $page_slug ) ) ? untrailingslashit( $page_slug ) : $page_slug;
 
-			if ( ! empty( $page_slug ) ) {
+			if ( ! empty( $page_slug ) )
+			{
 				$my_em_rules[ '^' . $page_slug . '/listing/([a-zA-Z0-9]+)/?$' ] = 'index.php?pagename=' . $page_slug . '&listing=$matches[1]';
 			}
 		}
@@ -98,11 +118,33 @@ final class Guesty_Wordpress
 		return $my_em_rules + $rules;
 	}
 
+	public function get_options()
+	{
+		$options = get_option( "_guesty_api_settings", array( 'key' => '', 'secret' => '' ) );
+
+		$defaults = array(
+			'key'     => '',
+			'secret'  => '',
+			'page_id' => '',
+			'limit'   => '10'
+		);
+
+		if ( ! is_array( $options ) )
+		{
+			$options = array();
+		}
+
+		$options = wp_parse_args( $options, $defaults );
+
+		return $options;
+	}
+
 	public function add_rewrite_rule()
 	{
 		$api = $this->get_options();
 
-		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) )
+		{
 			$page_name = $page->post_name;
 			add_rewrite_rule( '^/listing/([^/]+)/?$', 'index.php?pagename=' . $page_name . '&listing=$matches[1]', 'top' );
 		}
@@ -110,26 +152,11 @@ final class Guesty_Wordpress
 
 	public function pre_get_posts( $query )
 	{
-		if ( is_admin() || ! $query->is_main_query() ) {
+		if ( is_admin() || ! $query->is_main_query() )
+		{
 			return $query;
 		}
 
-	}
-
-	/**
-	 * Call this method to get singleton
-	 *
-	 * @return Guesty_Wordpress
-	 */
-	public static function Instance()
-	{
-		static $instance = false;
-		if ( $instance === false ) {
-			// Late static binding (PHP 5.3+)
-			$instance = new static();
-		}
-
-		return $instance;
 	}
 
 	public function scripts()
@@ -166,24 +193,29 @@ final class Guesty_Wordpress
 	{
 		if (
 			! isset( $_POST ) || ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'save_guesty_api_token' )
-		) {
+		)
+		{
 			return false;
 		}
 
 		$options = $this->get_options();
 
-		if ( isset( $_POST['guesty-api-key'] ) ) {
+		if ( isset( $_POST['guesty-api-key'] ) )
+		{
 			$options['key'] = esc_attr( $_POST['guesty-api-key'] );
 		}
-		if ( isset( $_POST['guesty-api-secret'] ) ) {
+		if ( isset( $_POST['guesty-api-secret'] ) )
+		{
 			$options['secret'] = esc_attr( $_POST['guesty-api-secret'] );
 		}
 
-		if ( isset( $_POST['guesty-page-id'] ) ) {
+		if ( isset( $_POST['guesty-page-id'] ) )
+		{
 			$options['page_id'] = esc_attr( $_POST['guesty-page-id'] );
 		}
 
-		if ( isset( $_POST['guesty-listing-limit'] ) ) {
+		if ( isset( $_POST['guesty-listing-limit'] ) )
+		{
 			$options['limit'] = esc_attr( $_POST['guesty-listing-limit'] );
 		}
 
@@ -199,26 +231,6 @@ final class Guesty_Wordpress
 		die( 0 );
 	}
 
-	public function get_options()
-	{
-		$options = get_option( "_guesty_api_settings", array( 'key' => '', 'secret' => '' ) );
-
-		$defaults = array(
-			'key'     => '',
-			'secret'  => '',
-			'page_id' => '',
-			'limit'   => '10'
-		);
-
-		if ( ! is_array( $options ) ) {
-			$options = array();
-		}
-
-		$options = wp_parse_args( $options, $defaults );
-
-		return $options;
-	}
-
 	private function save_options( $api )
 	{
 		return update_option( "_guesty_api_settings", $api );
@@ -231,7 +243,8 @@ final class Guesty_Wordpress
 
 	public function custom_shortcode_scripts()
 	{
-		if ( ! $this->has_shortcode() ) {
+		if ( ! $this->has_shortcode() )
+		{
 			return false;
 		}
 
@@ -244,8 +257,41 @@ final class Guesty_Wordpress
 		wp_enqueue_style( 'font-awesome' );
 
 		$guesty = array(
-			'baseURI' => untrailingslashit( get_permalink( $post ) ),
-			'limit' => $options['limit']
+			'baseURI'   => untrailingslashit( get_permalink( $post ) ),
+			'assetsURI' => $this->uri( 'assets/media' ),
+			'limit'     => $options['limit'],
+			'assets'    => array(
+				"TV"                                   => 'tv.d72f40a6.svg',
+				"Wireless Internet"                    => 'wifi.6a27ccc4.svg',
+				"Air conditioning"                     => 'air_condition.a63d4b3d.svg',
+				"Swimming pool"                        => 'pool.b6e54cba.svg',
+				"Kitchen"                              => 'kitchen.ee445ea9.svg',
+				"Paid parking off premises"            => 'parking.eae9a7e7.svg',
+				"Gym"                                  => 'gym.643d0cc5.svg',
+				"Elevator"                             => 'elevator.680de118.svg',
+				"Heating"                              => 'heating.00982edf.svg',
+				"Family/kid friendly"                  => 'family_friendly.0e71691f.svg',
+				"Washer"                               => 'washer.0d8a62c5.svg',
+				"Dryer"                                => 'dryer.4c0bbed8.svg',
+				"Smoke detector"                       => 'smoke_detector.9b74f6d1.svg',
+				"Carbon monoxide detector"             => 'CM_detector.ec5a1999.svg',
+				"First aid kit"                        => 'first_aid.5e6cb976.svg',
+				"Safety card"                          => 'safety_card.d0ec6238.svg',
+				"Fire extinguisher"                    => 'fire_extinguisher.b4dc4c53.svg',
+				"Essentials"                           => 'essentials.e4ea2d56.svg',
+				"Shampoo"                              => 'shampoo.d6012ad3.svg',
+				"Lock on bedroom door"                 => 'locker.4600563b.svg',
+				"Hangers"                              => 'hangers.c23b1116.svg',
+				"Hair dryer"                           => 'hair_dryer.4fe572b8.svg',
+				"Iron"                                 => 'iron.293f24f8.svg',
+				"Laptop friendly workspace"            => 'laptop.d8d9f484.svg',
+				"Self check-in"                        => 'checkin.a9175931.svg',
+				"Lockbox"                              => 'lockbox.80895ae2.svg',
+				"Hot water"                            => '',
+				"Suitable for children (2-12 years)"   => '',
+				"Suitable for infants (under 2 years)" => '',
+				"Pool"                                 => '',
+			)
 		);
 
 		wp_localize_script( 'guesty-main', 'GUESTY_ARGS', $guesty );
@@ -283,9 +329,11 @@ final class Guesty_Wordpress
 
 	public function template_include( $template )
 	{
-		if ( is_page( 'portfolio' ) ) {
+		if ( is_page( 'portfolio' ) )
+		{
 			$new_template = locate_template( array( 'portfolio-page-template.php' ) );
-			if ( ! empty( $new_template ) ) {
+			if ( ! empty( $new_template ) )
+			{
 				return $new_template;
 			}
 		}

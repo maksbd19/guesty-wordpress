@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>heating</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-603.000000, -1483.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="heating" transform="translate(315.000000, 77.000000)">
+                    <rect id="2" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M22.4875,21.1557 L22.4875,10.3117 C22.4875,9.0507 21.4655,8.0297 20.2055,8.0297 L19.7495,8.0297 C18.4885,8.0297 17.4665,9.0507 17.4665,10.3117 L17.4665,21.1557 C15.7055,22.0657 14.4995,23.9037 14.4995,26.0227 C14.4995,29.0477 16.9525,31.4997 19.9775,31.4997 C23.0015,31.4997 25.4535,29.0477 25.4535,26.0227 C25.4545,23.9037 24.2495,22.0657 22.4875,21.1557 L22.4875,21.1557 Z" id="Stroke-1" stroke="#464646"></path>
+                    <path d="M19.8499,28.1334 C20.9839,28.1334 21.9039,27.2134 21.9039,26.0794 C21.9039,24.9454 20.9839,24.0254 19.8499,24.0254 C18.7159,24.0254 17.7959,24.9454 17.7959,26.0794 C17.7959,27.2134 18.7159,28.1334 19.8499,28.1334 L19.8499,28.1334 Z" id="Stroke-3" stroke="#464646"></path>
+                    <path d="M19.9772,23.8933 L19.9772,10.5493" id="Stroke-5" stroke="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

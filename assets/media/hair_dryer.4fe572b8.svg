@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>hair dryer</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-918.000000, -1523.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="hair-dryer" transform="translate(630.000000, 117.000000)">
+                    <rect id="3" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M25.4373,34.7915 C25.4373,34.7915 23.6653,30.9275 23.7283,28.0515" id="Stroke-1" stroke="#464646"></path>
+                    <path d="M30.0303,11.7361 C24.8773,8.0671 20.2513,9.9761 18.5773,10.9091 L10.8923,10.6381 C10.2113,10.5991 9.6373,10.9781 9.6093,11.4831 L9.5013,13.4271 C9.4713,13.9321 10.0003,14.3731 10.6813,14.4121 L18.3223,15.3971 C20.6813,17.3251 24.8053,18.0761 24.8053,18.0761 C27.1493,17.8641 29.5363,16.8921 29.5363,16.8921 C30.9153,15.5541 30.5603,12.1111 30.0303,11.7361 L30.0303,11.7361 Z" id="Stroke-3" stroke="#464646"></path>
+                    <path d="M20.03,16.4858 C20.512,16.7728 21.406,17.5218 21.584,19.2058 L22.076,27.5998 C22.076,27.5998 23.399,28.4698 25.362,27.7518 L25.203,18.0808" id="Stroke-5" stroke="#464646"></path>
+                    <path d="M11.7712,10.6694 L11.5662,14.5264" id="Stroke-7" stroke="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

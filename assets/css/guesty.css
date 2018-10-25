@@ -1,4 +1,3 @@
-
 /* ====================
  * Presentation
  * ===================*/
@@ -12,39 +11,63 @@
 }
 
 .mb-lg-25 {
-    margin-bottom: .71rem!important;
+    margin-bottom: .71rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
 }
 
 .mb-45 {
-    margin-bottom: 2.1rem!important;
+    margin-bottom: 2.1rem !important;
 }
 
 .mb-35 {
-    margin-bottom: 1.4rem!important;
+    margin-bottom: 1.4rem !important;
 }
 
 .mt-35 {
-    margin-top: 1.4rem!important;
+    margin-top: 1.4rem !important;
 }
 
 .mb-2 {
-    margin-bottom: .5rem!important;
+    margin-bottom: .5rem !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
 }
 
 .pb-45 {
-    padding-bottom: 2.1rem!important;
+    padding-bottom: 2.1rem !important;
+}
+
+.pb-5 {
+    padding-bottom: 3rem !important;
 }
 
 .p-sm-5 {
-    padding: 3rem!important;
+    padding: 3rem !important;
 }
 
 .p-5 {
-    padding: 3rem!important;
+    padding: 3rem !important;
 }
 
 .mr-4 {
-    margin-right: 1.5rem!important;
+    margin-right: 1.5rem !important;
+}
+
+.mt-sm-6 {
+    margin-top: 5.7rem !important;
 }
 
 .btn {
@@ -77,9 +100,24 @@
     background-color: #6ac1ff;
     border-color: #6ac1ff;
 }
+
 .btn.disabled, .btn:disabled {
     cursor: not-allowed;
     opacity: .65;
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #6ac1ff;
+    border-radius: 0;
+}
+
+.btn-link, .btn-link.active, .btn-link:active, .btn-link:disabled {
+    background-color: transparent;
+}
+
+.btn-link, .btn-link:active, .btn-link:focus, .btn-link:hover {
+    border-color: transparent;
 }
 
 .icon-label.contained {
@@ -104,34 +142,84 @@
 }
 
 .text-center {
-    text-align: center!important;
+    text-align: center !important;
 }
 
 .d-sm-inline {
-    display: inline!important;
+    display: inline !important;
 }
 
 .d-block {
-    display: block!important;
+    display: block !important;
 }
 
 .d-flex {
-    display: -ms-flexbox!important;
-    display: flex!important;
+    display: -ms-flexbox !important;
+    display: flex !important;
 }
 
 .align-items-center {
-    -ms-flex-align: center!important;
-    align-items: center!important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
 }
+
 .flex-column {
-    -ms-flex-direction: column!important;
-    flex-direction: column!important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.bg-faded-2 {
+    background-color: #fafafa;
 }
 
 img {
     vertical-align: middle;
     border-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1em;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.h5, h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-weight: 500;
+}
+
+.h6, h6 {
+    font-size: 1rem;
+}
+
+.px-5 {
+    padding-right: 3rem !important;
+}
+
+.pl-5, .px-5 {
+    padding-left: 3rem !important;
+}
+
+.h6-text {
+    line-height: 1.7;
+}
+
+.white-space-pre-wrap {
+    white-space: pre-wrap;
 }
 
 /* ====================
@@ -148,6 +236,14 @@ img {
 }
 
 .col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.col-sm {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
     -ms-flex-positive: 1;
@@ -475,7 +571,7 @@ body.guesty-overlay {
     clear: both;
 }
 
-.guesty-single-row{
+.guesty-single-row {
     max-width: 66.4989378333em;
     margin-left: auto;
     margin-right: auto;
@@ -483,12 +579,12 @@ body.guesty-overlay {
     box-sizing: content-box;
 }
 
-.guesty-single-row.guesty-single-row-full{
+.guesty-single-row.guesty-single-row-full {
     max-width: 100%;
     padding: 0;
 }
 
-.guesty-secondary-header{
+.guesty-secondary-header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -499,30 +595,31 @@ body.guesty-overlay {
 }
 
 .guesty-secondary-header-left,
-.guesty-secondary-header-right{
+.guesty-secondary-header-right {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     width: auto;
 }
 
-.guesty-secondary-header-left{
+.guesty-secondary-header-left {
     max-width: 75%;
 }
-.guesty-secondary-header-right{
+
+.guesty-secondary-header-right {
     text-align: center;
 }
 
-.guesty-secondary-header-right p{
-    margin:0;
+.guesty-secondary-header-right p {
+    margin: 0;
 }
 
-.guesty-secondary-header-left h1{
+.guesty-secondary-header-left h1 {
     font-size: 26px;
     color: #fff;
     margin: 0;
 }
 
-.guesty-secondary-header-right .guesry-listing-price{
+.guesty-secondary-header-right .guesry-listing-price {
     font-size: 30px;
     line-height: 24px;
 }
@@ -533,6 +630,15 @@ body.guesty-overlay {
 
 .listing-address .icon-wrap {
     padding-top: 5px;
+}
+
+.guesty-amenities .guesty-amenities-block {
+    height: 300px;
+    overflow: hidden;
+}
+
+.guesty-amenities.open .guesty-amenities-block {
+    height: auto;
 }
 
 /*============================
@@ -565,7 +671,6 @@ ul.slides {
 ul.slides input {
     display: none;
 }
-
 
 .slide-container {
     display: block;
@@ -607,7 +712,7 @@ ul.slides input {
     cursor: pointer;
 }
 
-.slide-image:hover + .carousel-controls label{
+.slide-image:hover + .carousel-controls label {
     opacity: 0.5;
 }
 
@@ -656,10 +761,11 @@ input:checked + .slide-container .carousel-controls label {
     display: block;
 }
 
-input:checked + .slide-container .nav label { display: block; }
+input:checked + .slide-container .nav label {
+    display: block;
+}
 
 /**** other styles ***/
-
 
 .DateRangePicker {
     position: relative;
@@ -678,7 +784,7 @@ input:checked + .slide-container .nav label { display: block; }
 
 .DateRangePicker .DateRangePickerInput {
     width: 100%;
-    background-color: hsla(0,0%,100%,.96);
+    background-color: hsla(0, 0%, 100%, .96);
     border: none;
     border-radius: 2px;
     color: #464646;
@@ -713,10 +819,12 @@ input:checked + .slide-container .nav label { display: block; }
     padding-left: 20px;
     padding-top: 10px;
 }
+
 .DateRangePicker .DateInput input {
     border-radius: 2px;
     font-size: 16px;
 }
+
 .DateInput_input {
     font-weight: 200;
     font-size: 18px;
@@ -734,7 +842,7 @@ input:checked + .slide-container .nav label { display: block; }
 
 .DateInput_screenReaderMessage {
     border: 0;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     height: 1px;
     margin: -1px;
     overflow: hidden;
@@ -750,6 +858,7 @@ input:checked + .slide-container .nav label { display: block; }
 svg:not(:root) {
     overflow: hidden;
 }
+
 .DateRangePickerInput_arrow_svg {
     vertical-align: middle;
     fill: #565a5c;
@@ -771,7 +880,7 @@ svg:not(:root) {
 .separated-datepicker .DateInput {
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
-    background-color: hsla(0,0%,100%,.95);
+    background-color: hsla(0, 0%, 100%, .95);
     border-radius: 2px;
 }
 
@@ -787,7 +896,7 @@ svg:not(:root) {
 .Dropdown-control {
     position: relative;
     overflow: hidden;
-    background-color: hsla(0,0%,100%,.95);
+    background-color: hsla(0, 0%, 100%, .95);
     border-radius: 2px;
     cursor: pointer;
     outline: none;
@@ -819,12 +928,61 @@ svg:not(:root) {
     height: 50px;
 }
 
+.listing-page-section {
+    -webkit-transition: max-height .3s;
+    -o-transition: max-height .3s;
+    transition: max-height .3s;
+    overflow: hidden;
+}
+
+.listing-page-section h5 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.listing-page-section .h6-text {
+    font-weight: 700;
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.listing-page-section p{
+    margin-bottom: 14px;
+}
+
+.listing-page-sep{
+    margin-bottom: 14px;
+}
+
+.guesty-houserules .listing-page-section{
+    height: 280px;
+    overflow: hidden;
+}
+.guesty-houserules.open .listing-page-section{
+    height: auto;
+}
+
+.houserules-handle-more {
+    display: block;
+}
+
+.houserules-handle-less {
+    display: none;
+}
+
+.guesty-houserules.open .houserules-handle-more {
+    display: none;
+}
+
+.guesty-houserules.open .houserules-handle-less {
+    display: block;
+}
+
 /* ====================
  * Special overrides
  * ===================*/
 
-
-#primary{
+#primary {
     width: 100%;
     max-width: 100%;
     padding: 0;

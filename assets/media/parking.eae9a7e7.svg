@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>parking</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listing-Expand" transform="translate(-288.000000, -1483.000000)">
+            <g id="amenities" transform="translate(288.000000, 1406.000000)">
+                <g id="parking" transform="translate(0.000000, 77.000000)">
+                    <rect id="2" fill="#FFFFFF" x="0" y="0" width="40" height="40"></rect>
+                    <path d="M30.5,20 C30.5,25.799 25.799,30.5 20,30.5 C14.201,30.5 9.5,25.799 9.5,20 C9.5,14.201 14.201,9.5 20,9.5 C25.799,9.5 30.5,14.201 30.5,20 L30.5,20 Z" id="Stroke-1" stroke="#464646"></path>
+                    <path d="M23.6077,17.7292 C23.6077,18.3962 23.3897,18.9562 22.9607,19.3942 C22.5317,19.8312 21.8727,20.0522 21.0027,20.0522 L18.2337,20.0522 L18.2337,15.3832 L21.0027,15.3832 C21.8727,15.3832 22.5307,15.6072 22.9607,16.0492 C23.3897,16.4922 23.6077,17.0572 23.6077,17.7292 M23.7437,15.3132 C23.0957,14.7092 22.1747,14.4022 21.0027,14.4022 L17.1187,14.4022 L17.1187,25.5972 L18.2337,25.5972 L18.2337,21.0332 L21.0027,21.0332 C22.1747,21.0332 23.0967,20.7302 23.7427,20.1302 C24.3927,19.5282 24.7217,18.7162 24.7217,17.7142 C24.7217,16.7272 24.3927,15.9202 23.7437,15.3132" id="Fill-3" fill="#464646"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

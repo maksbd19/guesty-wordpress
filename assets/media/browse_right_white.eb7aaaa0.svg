@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="10px" height="19px" viewBox="0 0 10 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Homepage-interactions" transform="translate(-1280.000000, -1498.000000)" fill="#fff">
+            <g id="featured" transform="translate(150.000000, 1324.000000)">
+                <path d="M1139.47738,183.068308 C1139.50313,182.915712 1139.45982,182.752713 1139.34334,182.636237 L1130.84921,174.142104 C1130.65963,173.952528 1130.34179,173.951268 1130.14653,174.14653 C1129.95698,174.336081 1129.94929,174.656393 1130.1421,174.849211 L1138.36404,183.071151 L1130.1421,191.293091 C1129.95253,191.482668 1129.95127,191.80051 1130.14653,191.995772 C1130.33608,192.185324 1130.65639,192.193016 1130.84921,192.000198 L1139.34334,183.506065 C1139.46013,183.389276 1139.50545,183.223807 1139.47738,183.068308 Z" id="right"></path>
+            </g>
+        </g>
+    </g>
+</svg>
