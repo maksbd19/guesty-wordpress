@@ -244,14 +244,14 @@ var Guesty = (function (window, document, $) {
         '                           <div>' +
         '                               <div class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2">' +
         '                                   <div class="DateInput DateInput_1">' +
-        '                                       <input type="text" class="DateInput_input DateInput_input_1" aria-label="Check in" id="startDateId" name="startDateId" value="" placeholder="Check in" autocomplete="off" aria-describedby="DateInput__screen-reader-message-startDateId">' +
+        '                                       <input type="text" id="checkindatepicker" class="DateInput_input DateInput_input_1" aria-label="Check in" name="startDateId" value="" placeholder="Check in" autocomplete="off" aria-describedby="DateInput__screen-reader-message-startDateId">' +
         '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-startDateId">Press the down arrow key to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
         '                                   </div>' +
         '                                   <div class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1" aria-hidden="true" role="presentation">' +
         '                                       <svg class="DateRangePickerInput_arrow_svg DateRangePickerInput_arrow_svg_1" viewBox="0 0 1000 1000"><path d="M694.4 242.4l249.1 249.1c11 11 11 21 0 32L694.4 772.7c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210.1-210.1H67.1c-13 0-23-10-23-23s10-23 23-23h805.4L662.4 274.5c-21-21.1 11-53.1 32-32.1z"></path></svg>' +
         '                                   </div>' +
         '                                   <div class="DateInput DateInput_1">' +
-        '                                       <input type="text" class="DateInput_input DateInput_input_1" aria-label="Check out" id="endDateId" name="endDateId" value="" placeholder="Check out" autocomplete="off" aria-describedby="DateInput__screen-reader-message-endDateId">' +
+        '                                       <input type="text" id="checkoutdatepicker" class="DateInput_input DateInput_input_1" aria-label="Check out" name="endDateId" value="" placeholder="Check out" autocomplete="off" aria-describedby="DateInput__screen-reader-message-endDateId">' +
         '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-endDateId">Press the down arrow key to interact with the calendar andselect a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
         '                                   </div>' +
         '                               </div>' +
@@ -447,6 +447,10 @@ var Guesty = (function (window, document, $) {
             if (item) {
                 $singleContainer.append(buildSingleUI(item));
             }
+
+            $("#checkindatepicker").datepicker();
+            $("#checkoutdatepicker").datepicker();
+
         }, function (code, err) {
             console.error(code, err);
         });

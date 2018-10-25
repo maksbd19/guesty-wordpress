@@ -13,8 +13,7 @@ Author URI: http://makjoybd/
 */
 
 
-if ( ! defined( 'ABSPATH' ) )
-{
+if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
@@ -71,8 +70,7 @@ final class Guesty_Wordpress
 	public static function Instance()
 	{
 		static $instance = false;
-		if ( $instance === false )
-		{
+		if ( $instance === false ) {
 			// Late static binding (PHP 5.3+)
 			$instance = new static();
 		}
@@ -103,14 +101,12 @@ final class Guesty_Wordpress
 
 		$my_em_rules = array();
 
-		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) )
-		{
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
 			$page_id   = $api['page_id'];
 			$page_slug = urldecode( preg_replace( '/\/$/', '', str_replace( trailingslashit( home_url() ), '', get_permalink( $page_id ) ) ) );
 			$page_slug = ( ! empty( $page_slug ) ) ? untrailingslashit( $page_slug ) : $page_slug;
 
-			if ( ! empty( $page_slug ) )
-			{
+			if ( ! empty( $page_slug ) ) {
 				$my_em_rules[ '^' . $page_slug . '/listing/([a-zA-Z0-9]+)/?$' ] = 'index.php?pagename=' . $page_slug . '&listing=$matches[1]';
 			}
 		}
@@ -129,8 +125,7 @@ final class Guesty_Wordpress
 			'limit'   => '10'
 		);
 
-		if ( ! is_array( $options ) )
-		{
+		if ( ! is_array( $options ) ) {
 			$options = array();
 		}
 
@@ -143,8 +138,7 @@ final class Guesty_Wordpress
 	{
 		$api = $this->get_options();
 
-		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) )
-		{
+		if ( isset( $api['page_id'] ) && $api['page_id'] !== "" && ( $page = get_post( $api['page_id'] ) ) ) {
 			$page_name = $page->post_name;
 			add_rewrite_rule( '^/listing/([^/]+)/?$', 'index.php?pagename=' . $page_name . '&listing=$matches[1]', 'top' );
 		}
@@ -152,8 +146,7 @@ final class Guesty_Wordpress
 
 	public function pre_get_posts( $query )
 	{
-		if ( is_admin() || ! $query->is_main_query() )
-		{
+		if ( is_admin() || ! $query->is_main_query() ) {
 			return $query;
 		}
 
@@ -162,8 +155,10 @@ final class Guesty_Wordpress
 	public function scripts()
 	{
 		wp_register_script( 'guesty-main', guesty()->uri( 'assets/js/guesty.js' ), array( 'jquery' ), '1.0.0', true );
+		wp_register_script( 'momentjs', guesty()->uri( 'assets/js/moment.min.js' ), array( 'jquery' ), '1.0.0', true );
 		wp_register_style( 'guesty-styles', guesty()->uri( 'assets/css/guesty.css' ), array(), '1.0.0' );
 		wp_register_style( 'font-awesome', "https://use.fontawesome.com/releases/v5.4.1/css/all.css", array(), '5.4.1' );
+		wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
 	}
 
 	public function uri( $trail = "" )
@@ -193,29 +188,24 @@ final class Guesty_Wordpress
 	{
 		if (
 			! isset( $_POST ) || ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'save_guesty_api_token' )
-		)
-		{
+		) {
 			return false;
 		}
 
 		$options = $this->get_options();
 
-		if ( isset( $_POST['guesty-api-key'] ) )
-		{
+		if ( isset( $_POST['guesty-api-key'] ) ) {
 			$options['key'] = esc_attr( $_POST['guesty-api-key'] );
 		}
-		if ( isset( $_POST['guesty-api-secret'] ) )
-		{
+		if ( isset( $_POST['guesty-api-secret'] ) ) {
 			$options['secret'] = esc_attr( $_POST['guesty-api-secret'] );
 		}
 
-		if ( isset( $_POST['guesty-page-id'] ) )
-		{
+		if ( isset( $_POST['guesty-page-id'] ) ) {
 			$options['page_id'] = esc_attr( $_POST['guesty-page-id'] );
 		}
 
-		if ( isset( $_POST['guesty-listing-limit'] ) )
-		{
+		if ( isset( $_POST['guesty-listing-limit'] ) ) {
 			$options['limit'] = esc_attr( $_POST['guesty-listing-limit'] );
 		}
 
@@ -243,8 +233,7 @@ final class Guesty_Wordpress
 
 	public function custom_shortcode_scripts()
 	{
-		if ( ! $this->has_shortcode() )
-		{
+		if ( ! $this->has_shortcode() ) {
 			return false;
 		}
 
@@ -255,6 +244,9 @@ final class Guesty_Wordpress
 		wp_enqueue_script( 'guesty-main' );
 		wp_enqueue_style( 'guesty-styles' );
 		wp_enqueue_style( 'font-awesome' );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+		wp_enqueue_style( 'jquery-ui' );
+		wp_enqueue_style( 'momentjs' );
 
 		$guesty = array(
 			'baseURI'   => untrailingslashit( get_permalink( $post ) ),
@@ -329,11 +321,9 @@ final class Guesty_Wordpress
 
 	public function template_include( $template )
 	{
-		if ( is_page( 'portfolio' ) )
-		{
+		if ( is_page( 'portfolio' ) ) {
 			$new_template = locate_template( array( 'portfolio-page-template.php' ) );
-			if ( ! empty( $new_template ) )
-			{
+			if ( ! empty( $new_template ) ) {
 				return $new_template;
 			}
 		}
