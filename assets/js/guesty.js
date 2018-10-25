@@ -217,7 +217,7 @@ var Guesty = (function (window, document, $) {
         '               <div class="guesty-primary-image">__LISTING.CAROUSEL__</div>' +
         '           </div>' +
         '           <div class="guesty-secondary">' +
-        '               <div class="guesty-secondary-header">' +
+        '               <div class="guesty-secondary-header separator-black">' +
         '                   <div class="guesty-secondary-header-left">' +
         '                       <h1>__LISTING.TITLE__</h1>' +
         '                   </div>' +
@@ -260,74 +260,74 @@ var Guesty = (function (window, document, $) {
         '               </a>'+
         '           </div>' +
         '       </div>' +
-        // '       <div class="guesty-single-row">' +
-        // '           <div class="row no-gutters separator">' +
-        // '               <div class="col-xl p-sm-5 py-5 px-2 listing-general-info-row">' +
-        // '                   <div class="d-flex">' +
-        // '                       <div class="listing-general-info-item mr-4">' +
-        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        // '                               <div class="icon-wrap mb-2">' +
-        // '                                   <img src="/static/media/listing_guests.b6f69025.svg" alt="listing_guests">' +
-        // '                               </div>' +
-        // '                               <div class="wide">' +
-        // '                                   <div class="line-height-12">' +
-        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.GUESTS.COUNT__</span>' +
-        // '                                       <span>guests</span>' +
-        // '                                   </div>' +
-        // '                               </div>' +
-        // '                           </div>' +
-        // '                       </div>' +
-        // '                       <div class="listing-general-info-item mr-4">' +
-        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        // '                               <div class="icon-wrap mb-2">' +
-        // '                                   <img src="/static/media/listing_bedrooms.7ddd6a2a.svg" alt="listing_bedrooms">' +
-        // '                               </div>' +
-        // '                               <div class="wide">' +
-        // '                                   <div class="line-height-12">' +
-        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDROOMS.COUNT__</span>' +
-        // '                                       <span>bedrooms</span>' +
-        // '                                   </div>' +
-        // '                               </div>' +
-        // '                           </div>' +
-        // '                       </div>' +
-        // '                       <div class="listing-general-info-item mr-4">' +
-        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        // '                               <div class="icon-wrap mb-2">' +
-        // '                                   <img src="/static/media/listing_beds.7143f54e.svg" alt="listing_beds">' +
-        // '                               </div>' +
-        // '                               <div class="wide">' +
-        // '                                   <div class="line-height-12">' +
-        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDS.COUNT__</span>' +
-        // '                                       <span>beds</span>' +
-        // '                                   </div>' +
-        // '                               </div>' +
-        // '                           </div>' +
-        // '                       </div>' +
-        // '                       <div class="listing-general-info-item">' +
-        // '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
-        // '                               <div class="icon-wrap mb-2">' +
-        // '                                   <img src="/static/media/listing_bathroom.31f189cc.svg" alt="listing_bathroom">' +
-        // '                               </div>' +
-        // '                               <div class="wide">' +
-        // '                                   <div class="line-height-12">' +
-        // '                                       <span class="d-block d-sm-inline text-center">__LISTING.BATHROOM.COUNT__</span>' +
-        // '                                       <span>bathrooms</span>' +
-        // '                                   </div>' +
-        // '                               </div>' +
-        // '                           </div>' +
-        // '                       </div>' +
-        // '                   </div>' +
-        // '               </div>' +
-        // '               <div class="col-xl p-5 text-center listing-address">' +
-        // '                   <div class="icon-label d-flex align-items-center flex-column contained">' +
-        // '                       <div class="icon-wrap mb-2">' +
-        // '                           <img src="/static/media/listing_location.75e1758b.svg" alt="listing_location">' +
-        // '                       </div>' +
-        // '                       <div class="">__LISTING.BASEADDRESS__</div>' +
-        // '                   </div>' +
-        // '               </div>' +
-        // '           </div>' +
-        // '       </div>' +
+        '       <div class="guesty-single-row">' +
+        '           <div class="row no-gutters separator">' +
+        '               <div class="col-xl p-sm-5 py-5 px-2 listing-general-info-row">' +
+        '                   <div class="d-flex">' +
+        '                       <div class="listing-general-info-item mr-4">' +
+        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                               <div class="icon-wrap mb-2">' +
+        '                                   <img src="/static/media/listing_guests.b6f69025.svg" alt="listing_guests">' +
+        '                               </div>' +
+        '                               <div class="wide">' +
+        '                                   <div class="line-height-12">' +
+        '                                       <span class="d-block d-sm-inline text-center">__LISTING.GUESTS.COUNT__</span>' +
+        '                                       <span>guests</span>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                       <div class="listing-general-info-item mr-4">' +
+        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                               <div class="icon-wrap mb-2">' +
+        '                                   <img src="/static/media/listing_bedrooms.7ddd6a2a.svg" alt="listing_bedrooms">' +
+        '                               </div>' +
+        '                               <div class="wide">' +
+        '                                   <div class="line-height-12">' +
+        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDROOMS.COUNT__</span>' +
+        '                                       <span>bedrooms</span>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                       <div class="listing-general-info-item mr-4">' +
+        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                               <div class="icon-wrap mb-2">' +
+        '                                   <img src="/static/media/listing_beds.7143f54e.svg" alt="listing_beds">' +
+        '                               </div>' +
+        '                               <div class="wide">' +
+        '                                   <div class="line-height-12">' +
+        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BEDS.COUNT__</span>' +
+        '                                       <span>beds</span>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                       <div class="listing-general-info-item">' +
+        '                           <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                               <div class="icon-wrap mb-2">' +
+        '                                   <img src="/static/media/listing_bathroom.31f189cc.svg" alt="listing_bathroom">' +
+        '                               </div>' +
+        '                               <div class="wide">' +
+        '                                   <div class="line-height-12">' +
+        '                                       <span class="d-block d-sm-inline text-center">__LISTING.BATHROOM.COUNT__</span>' +
+        '                                       <span>bathrooms</span>' +
+        '                                   </div>' +
+        '                               </div>' +
+        '                           </div>' +
+        '                       </div>' +
+        '                   </div>' +
+        '               </div>' +
+        '               <div class="col-xl p-5 text-center listing-address">' +
+        '                   <div class="icon-label d-flex align-items-center flex-column contained">' +
+        '                       <div class="icon-wrap mb-2">' +
+        '                           <img src="/static/media/listing_location.75e1758b.svg" alt="listing_location">' +
+        '                       </div>' +
+        '                       <div class="">__LISTING.BASEADDRESS__</div>' +
+        '                   </div>' +
+        '               </div>' +
+        '           </div>' +
+        '       </div>' +
         '       <div class="guesty-single-row">' +
         '           <div class="guesty-amenities">' +
         '               <h3>Amenities</h3>' +
