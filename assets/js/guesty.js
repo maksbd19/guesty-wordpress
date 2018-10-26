@@ -179,6 +179,50 @@ var Guesty = (function (window, document, $) {
 
     };
 
+    G.handleDropdownControl = function (e) {
+        e.preventDefault();
+        $(this).closest('.Dropdown-root').toggleClass('open');
+        return false;
+
+    };
+
+    G.handleDropdownOption = function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+        var count = $this.data('count');
+
+        $("#guestCount").val(count);
+        $(".Dropdown-placeholder").text(count + (count > 1 ? " Guests" : " Guest"));
+        $(".Dropdown-root").removeClass('open');
+        updateBookBtn();
+
+        return false;
+
+    };
+
+    G.handleDropdownControlRemove = function (e) {
+        e.preventDefault();
+        if (!$(event.target).hasClass('Dropdown-root') && !$(event.target).hasClass('Dropdown-option') && !$(event.target).hasClass('Dropdown-menu')) {
+            $('.Dropdown-root').removeClass('open');
+        }
+        return false;
+
+    };
+
+    function updateBookBtn(){
+        var checkin = $container.find("#checkindatepicker");
+        var checkout = $container.find("#checkoutdatepicker");
+        var guest = $container.find("#guestCount");
+
+
+        if(checkin.val() === "" || checkout.val() === "" || guest.val() === "" || guest.val() == 0){
+            return false;
+        }
+
+        $container.find(".guesty-secondary .d-block .submit-btn").removeAttr("disabled");
+    }
+
     //  templates
 
     var TEMPLATES = {};
@@ -262,10 +306,12 @@ var Guesty = (function (window, document, $) {
         '               </div>' +
         '               <div class="mb-35">' +
         '                   <div class="Dropdown-root">' +
+        '                       <input type="hidden" name="guest-count" value="0" id="guestCount">' +
         '                       <div class="Dropdown-control " data-label="Guests">' +
         '                           <div class="Dropdown-placeholder">Guests</div>' +
         '                           <span class="Dropdown-arrow"></span>' +
         '                       </div>' +
+        '                       <div class="Dropdown-menu">__LISTING.DROPDOWNOPTIONS__</div>'+
         '                   </div>' +
         '               </div>'+
         '               <a class="d-block" href="__LISTING.PERMALINK__/book?">' +
@@ -468,6 +514,7 @@ var Guesty = (function (window, document, $) {
                 {
                     $('#checkindatepicker').val(s1);
                     $('#checkoutdatepicker').val(s2);
+                    updateBookBtn();
                 }
             });
 
@@ -752,6 +799,22 @@ var Guesty = (function (window, document, $) {
         }
         catch(e){}
 
+        var dropdownOptions = [];
+        var accommodates = 10;
+
+        if(typeof item.accommodates !== "undefined" && item.accomodates ){
+            accommodates = parseInt(item.accommodates);
+
+            if(isNaN(accommodates)){
+                accommodates = 10;
+            }
+        }
+
+        for(var i = 0; i<accommodates;i++){
+            dropdownOptions.push('<div class="Dropdown-option" data-count="' + (i+1) + '">' + (i+1) + '</div>');
+        }
+
+
 
         $listing = TEMPLATES.LISTING.replace('__LISTING.TITLE__', item.title);
         $listing = $listing.replace('__LISTING.ID__', item._id);
@@ -776,6 +839,7 @@ var Guesty = (function (window, document, $) {
         $listing = $listing.replace('__LISTING.PD.INTERACTION__', item.publicDescription['interactionWithGuests'] || '');
         $listing = $listing.replace('__LISTING.PD.TRANSIT__', item.publicDescription['transit'] || '');
         $listing = $listing.replace('__LISTING.PD.HOUSERULES__', houseRules);
+        $listing = $listing.replace('__LISTING.DROPDOWNOPTIONS__', dropdownOptions.join(""));
 
         $listing = $listing.replace(/__BASEURI__/gi, __options.baseURI);
         $listing = $listing.replace(/_@_ASSETS_@_/gi, __options.assetsURI);
@@ -792,6 +856,9 @@ var Guesty = (function (window, document, $) {
         $container.on("click", ".amenities-handle-less", G.handleAmenitiesLess);
         $container.on("click", ".houserules-handle-more", G.handleHouserulesMore);
         $container.on("click", ".houserules-handle-less", G.handleHouserulesLess);
+        $container.on("click", ".Dropdown-control", G.handleDropdownControl);
+        $container.on("click", ".Dropdown-option", G.handleDropdownOption);
+        $(document).on("click", G.handleDropdownControlRemove);
     }
 
 

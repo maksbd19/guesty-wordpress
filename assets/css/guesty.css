@@ -936,6 +936,39 @@ svg:not(:root) {
     background-image: url(https://reserverentals.guestybookings.com/static/media/dropdown.32814f97.svg);
 }
 
+.Dropdown-menu {
+    background-color: hsla(0,0%,100%,.95);
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+}
+
+.Dropdown-option {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: rgba(51,51,51,.8);
+    cursor: pointer;
+    display: block;
+    padding: 8px 20px;
+}
+
+.Dropdown-root .Dropdown-menu{
+    display:none;
+}
+
+.Dropdown-root.open .Dropdown-menu{
+    display:block;
+}
+
 .d-block .btn.submit-btn.btn-primary {
     background: rgb(226, 36, 0);
 }
@@ -992,6 +1025,10 @@ svg:not(:root) {
 
 .guesty-houserules.open .houserules-handle-less {
     display: block;
+}
+
+.date-picker-wrapper.no-shortcuts.no-gap {
+    z-index: 9999;
 }
 
 /* ====================
