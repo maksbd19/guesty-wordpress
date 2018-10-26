@@ -154,11 +154,22 @@ final class Guesty_Wordpress
 
 	public function scripts()
 	{
-		wp_register_script( 'guesty-main', guesty()->uri( 'assets/js/guesty.js' ), array( 'jquery' ), '1.0.0', true );
-		wp_register_script( 'momentjs', guesty()->uri( 'assets/js/moment.min.js' ), array( 'jquery' ), '1.0.0', true );
-		wp_register_style( 'guesty-styles', guesty()->uri( 'assets/css/guesty.css' ), array(), '1.0.0' );
+		wp_register_script( 'momentjs', guesty()->uri( 'assets/js/moment.min.js' ), array(), '1.0.0', true );
+		wp_register_script( 'jquery-daterangepicker', guesty()->uri( 'assets/js/jquery.daterangepicker.min.js' ), array(
+			'jquery',
+			'momentjs'
+		), '1.0.0', true );
+		wp_register_script( 'guesty-main', guesty()->uri( 'assets/js/guesty.js' ), array(
+			'jquery',
+			'jquery-daterangepicker'
+		), '1.0.0', true );
+
 		wp_register_style( 'font-awesome', "https://use.fontawesome.com/releases/v5.4.1/css/all.css", array(), '5.4.1' );
-		wp_register_style( 'jquery-ui', 'http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css' );
+		wp_register_style( 'jquery-daterangepicker', guesty()->uri( 'assets/css/daterangepicker.min.css' ) );
+		wp_register_style( 'guesty-styles', guesty()->uri( 'assets/css/guesty.css' ), array(
+			'font-awesome',
+			'jquery-daterangepicker'
+		), '1.0.0' );
 	}
 
 	public function uri( $trail = "" )
@@ -243,10 +254,10 @@ final class Guesty_Wordpress
 
 		wp_enqueue_script( 'guesty-main' );
 		wp_enqueue_style( 'guesty-styles' );
-		wp_enqueue_style( 'font-awesome' );
-		wp_enqueue_script( 'jquery-ui-datepicker' );
-		wp_enqueue_style( 'jquery-ui' );
-		wp_enqueue_style( 'momentjs' );
+//		wp_enqueue_style( 'font-awesome' );
+//		wp_enqueue_script( 'jquery-ui-datepicker' );
+//		wp_enqueue_style( 'jquery-ui' );
+//		wp_enqueue_style( 'momentjs' );
 
 		$guesty = array(
 			'baseURI'   => untrailingslashit( get_permalink( $post ) ),

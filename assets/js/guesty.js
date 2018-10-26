@@ -242,7 +242,7 @@ var Guesty = (function (window, document, $) {
         '                   <div class="separated-datepicker">' +
         '                       <div class="DateRangePicker DateRangePicker_1">' +
         '                           <div>' +
-        '                               <div class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2">' +
+        '                               <div id="checkinoutdatepicker" class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2">' +
         '                                   <div class="DateInput DateInput_1">' +
         '                                       <input type="text" id="checkindatepicker" class="DateInput_input DateInput_input_1" aria-label="Check in" name="startDateId" value="" placeholder="Check in" autocomplete="off" aria-describedby="DateInput__screen-reader-message-startDateId">' +
         '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-startDateId">Press the down arrow key to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
@@ -255,6 +255,7 @@ var Guesty = (function (window, document, $) {
         '                                       <p class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1" id="DateInput__screen-reader-message-endDateId">Press the down arrow key to interact with the calendar andselect a date. Press the question mark key to get the keyboard shortcuts for changing dates.</p>' +
         '                                   </div>' +
         '                               </div>' +
+        '                               <div id="date-range-picker-container"></div>' +
         '                           </div>' +
         '                       </div>' +
         '                   </div>' +
@@ -448,8 +449,27 @@ var Guesty = (function (window, document, $) {
                 $singleContainer.append(buildSingleUI(item));
             }
 
-            $("#checkindatepicker").datepicker();
-            $("#checkoutdatepicker").datepicker();
+            // var checkin = $("#checkindatepicker").dateRangePicker();
+            // var checkout = $("#checkoutdatepicker").dateRangePicker();
+
+            var checkInCheckOut = $("#checkinoutdatepicker").dateRangePicker({
+                // container: '#date-range-picker-container',
+                // container: '#checkinoutdatepicker',
+                separator : ' to ',
+                startDate: new Date(),
+                getValue: function()
+                {
+                    if ($('#checkindatepicker').val() && $('#checkoutdatepicker').val() )
+                        return $('#dcheckindatepicker').val() + ' to ' + $('#checkoutdatepicker').val();
+                    else
+                        return '';
+                },
+                setValue: function(s,s1,s2)
+                {
+                    $('#checkindatepicker').val(s1);
+                    $('#checkoutdatepicker').val(s2);
+                }
+            });
 
         }, function (code, err) {
             console.error(code, err);
