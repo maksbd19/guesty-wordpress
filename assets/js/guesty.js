@@ -202,12 +202,9 @@ var Guesty = (function (window, document, $) {
     };
 
     G.handleDropdownControlRemove = function (e) {
-        e.preventDefault();
         if (!$(event.target).hasClass('Dropdown-root') && !$(event.target).hasClass('Dropdown-option') && !$(event.target).hasClass('Dropdown-menu')) {
             $('.Dropdown-root').removeClass('open');
         }
-        return false;
-
     };
 
     function updateBookBtn(){
